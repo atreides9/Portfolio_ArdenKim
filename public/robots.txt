@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ardenkim.com/sitemap.xml
+
+# Crawl-delay for performance
+Crawl-delay: 1
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block specific paths if needed
+# Disallow: /api/
+# Disallow: /_next/static/
+
+# Allow specific important pages
+Allow: /
+Allow: /#about
+Allow: /#projects
+Allow: /#skills
+Allow: /#contact
