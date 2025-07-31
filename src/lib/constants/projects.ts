@@ -54,6 +54,23 @@ export const PROJECTS: readonly Project[] = [
     category: 'interface-design',
     featured: false,
     completedAt: new Date('2024-02-20')
+  },
+  {
+    id: 'starbucks-redesign',
+    title: 'Starbucks App Redesign',
+    description: '글로벌 브랜드 스타벅스 앱의 사용자 경험 개선을 통해 주문 완료율 45% 향상. 직관적인 메뉴 탐색과 개인화된 추천 시스템으로 고객 만족도를 크게 향상시켰습니다.',
+    imageUrl: '/images/projects/starbucks-redesign-hero.webp',
+    blurDataURL: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==',
+    metrics: [
+      { label: '주문 완료율', value: '45%', description: '사용자 경험 개선 효과' },
+      { label: '앱 평점', value: '4.8', description: 'App Store 기준' },
+      { label: '사용 시간', value: '2.3x', description: '세션당 평균 시간' }
+    ],
+    tags: ['Mobile UX', 'E-commerce', 'Brand Design', 'User Research'],
+    category: 'interface-design',
+    featured: true,
+    completedAt: new Date('2024-05-10'),
+    url: 'https://starbucks-redesign.ardenkim.com'
   }
 ] as const;
 
