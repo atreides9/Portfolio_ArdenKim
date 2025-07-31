@@ -1,17 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Minimal config for Vercel deployment
+  // Vercel-optimized configuration
+  reactStrictMode: true,
+  swcMinify: true,
+  
+  // Image optimization
   images: {
-    unoptimized: true
+    formats: ['image/webp'],
+    deviceSizes: [640, 828, 1200, 1920],
   },
-  trailingSlash: true,
-  // Remove experimental features that might cause issues
-  typescript: {
-    ignoreBuildErrors: false,
+  
+  // Performance optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
-  eslint: {
-    ignoreDuringBuilds: false,
-  }
+  
+  // Ensure proper build for Vercel
+  distDir: '.next',
+  generateEtags: false,
 }
 
 module.exports = nextConfig
