@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  // Minimal config - remove trailingSlash that causes export behavior
+}
 
 module.exports = nextConfig
