@@ -54,6 +54,9 @@ const nextConfig = {
   // Vercel deployment optimization
   trailingSlash: true,
   
+  // Remove static export for Vercel deployment
+  // output: 'export',
+  
   // Asset optimization - removed for Vercel free plan
   // assetPrefix: process.env.NODE_ENV === 'production' ? 'https://cdn.ardenkim.com' : '',
 };
