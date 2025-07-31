@@ -66,7 +66,24 @@ const config: Config = {
         },
       },
       
-      // Typography scale for readability
+      // Typography scale for readability  
+      fontFamily: {
+        sans: [
+          'system-ui',
+          '-apple-system', 
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'Noto Sans',
+          'sans-serif',
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+          'Segoe UI Symbol',
+          'Noto Color Emoji'
+        ],
+      },
       fontSize: {
         'hero': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
         'heading-1': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
@@ -95,7 +112,6 @@ const config: Config = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
     // Custom plugin for performance utilities
     function({ addUtilities }: any) {
       addUtilities({

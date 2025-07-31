@@ -33,8 +33,9 @@ export function Navigation() {
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id);
+        const navItem = navItems[i];
+        if (section && navItem && section.offsetTop <= scrollPosition) {
+          setActiveSection(navItem.id);
           break;
         }
       }

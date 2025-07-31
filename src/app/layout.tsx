@@ -110,8 +110,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         
-        {/* Performance optimization - resource hints */}
-        <link rel="preload" href="/fonts/pretendard-variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Performance optimization - preconnect to external domains */}
       </head>
       <body 
         className={`
