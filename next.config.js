@@ -1,13 +1,8 @@
 /** @type {import('next').NextConfig} */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
 const nextConfig = {
   // Performance optimizations
   experimental: {
-    optimizePackageImports: ['framer-motion', 'lucide-react'],
-    turboPack: true,
+    optimizePackageImports: ['framer-motion'],
   },
   
   // Image optimization for 60% faster loading
@@ -56,12 +51,11 @@ const nextConfig = {
   // Font optimization
   optimizeFonts: true,
   
-  // Static generation for maximum performance
-  output: 'export',
+  // Vercel deployment optimization
   trailingSlash: true,
   
-  // Asset optimization
-  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://cdn.ardenkim.com' : '',
+  // Asset optimization - removed for Vercel free plan
+  // assetPrefix: process.env.NODE_ENV === 'production' ? 'https://cdn.ardenkim.com' : '',
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = nextConfig;
