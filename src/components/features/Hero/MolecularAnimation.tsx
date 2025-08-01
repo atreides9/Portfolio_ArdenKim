@@ -13,7 +13,7 @@ interface AtomProps {
 
 function Atom({ x, y, size, color, delay }: AtomProps) {
   const time = useTime();
-  
+
   // GPU-optimized transforms for 60fps performance
   const rotateX = useTransform(time, [0, 4000], [0, 360]);
   const rotateY = useTransform(time, [0, 6000], [0, 360]);
@@ -33,10 +33,10 @@ function Atom({ x, y, size, color, delay }: AtomProps) {
       }}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ 
+      transition={{
         delay: delay,
         duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
+        ease: [0.16, 1, 0.3, 1],
       }}
       filter="url(#molecular-glow)"
     />
@@ -67,10 +67,10 @@ function Bond({ x1, y1, x2, y2, delay }: BondProps) {
       style={{ opacity }}
       initial={{ pathLength: 0, opacity: 0 }}
       animate={{ pathLength: 1, opacity: 0.7 }}
-      transition={{ 
+      transition={{
         delay: delay,
         duration: 1.2,
-        ease: [0.16, 1, 0.3, 1]
+        ease: [0.16, 1, 0.3, 1],
       }}
     />
   );
@@ -78,29 +78,32 @@ function Bond({ x1, y1, x2, y2, delay }: BondProps) {
 
 export function MolecularAnimation() {
   // Optimized molecular structure data
-  const molecularData = useMemo(() => ({
-    atoms: [
-      { x: 120, y: 100, size: 12, color: '#3B82F6', delay: 0 },     // Primary blue
-      { x: 280, y: 80, size: 10, color: '#10B981', delay: 0.2 },    // Emerald
-      { x: 400, y: 140, size: 14, color: '#8B5CF6', delay: 0.4 },   // Purple
-      { x: 200, y: 220, size: 11, color: '#F59E0B', delay: 0.6 },   // Amber
-      { x: 340, y: 260, size: 13, color: '#EF4444', delay: 0.8 },   // Red
-      { x: 160, y: 320, size: 9, color: '#06B6D4', delay: 1.0 },    // Cyan
-      { x: 300, y: 180, size: 8, color: '#84CC16', delay: 1.2 },    // Lime
-    ],
-    bonds: [
-      { x1: 120, y1: 100, x2: 280, y2: 80, delay: 0.3 },
-      { x1: 280, y1: 80, x2: 400, y2: 140, delay: 0.5 },
-      { x1: 200, y1: 220, x2: 340, y2: 260, delay: 0.7 },
-      { x1: 120, y1: 100, x2: 200, y2: 220, delay: 0.9 },
-      { x1: 280, y1: 80, x2: 300, y2: 180, delay: 1.1 },
-      { x1: 300, y1: 180, x2: 340, y2: 260, delay: 1.3 },
-      { x1: 160, y1: 320, x2: 200, y2: 220, delay: 1.5 },
-    ]
-  }), []);
+  const molecularData = useMemo(
+    () => ({
+      atoms: [
+        { x: 120, y: 100, size: 12, color: '#3B82F6', delay: 0 }, // Primary blue
+        { x: 280, y: 80, size: 10, color: '#10B981', delay: 0.2 }, // Emerald
+        { x: 400, y: 140, size: 14, color: '#8B5CF6', delay: 0.4 }, // Purple
+        { x: 200, y: 220, size: 11, color: '#F59E0B', delay: 0.6 }, // Amber
+        { x: 340, y: 260, size: 13, color: '#EF4444', delay: 0.8 }, // Red
+        { x: 160, y: 320, size: 9, color: '#06B6D4', delay: 1.0 }, // Cyan
+        { x: 300, y: 180, size: 8, color: '#84CC16', delay: 1.2 }, // Lime
+      ],
+      bonds: [
+        { x1: 120, y1: 100, x2: 280, y2: 80, delay: 0.3 },
+        { x1: 280, y1: 80, x2: 400, y2: 140, delay: 0.5 },
+        { x1: 200, y1: 220, x2: 340, y2: 260, delay: 0.7 },
+        { x1: 120, y1: 100, x2: 200, y2: 220, delay: 0.9 },
+        { x1: 280, y1: 80, x2: 300, y2: 180, delay: 1.1 },
+        { x1: 300, y1: 180, x2: 340, y2: 260, delay: 1.3 },
+        { x1: 160, y1: 320, x2: 200, y2: 220, delay: 1.5 },
+      ],
+    }),
+    []
+  );
 
   const time = useTime();
-  
+
   // Container rotation for dynamic effect
   const rotate = useTransform(time, [0, 20000], [0, 360]);
   const containerScale = useTransform(time, [0, 8000], [0.9, 1.1], { clamp: false });
@@ -110,23 +113,23 @@ export function MolecularAnimation() {
       {/* Background circle for visual emphasis */}
       <motion.div
         className="absolute inset-0 rounded-full bg-gradient-to-br from-primary-100/50 to-purple-100/50 dark:from-primary-900/20 dark:to-purple-900/20 blur-xl"
-        animate={{ 
+        animate={{
           scale: [1, 1.05, 1],
-          opacity: [0.3, 0.6, 0.3]
+          opacity: [0.3, 0.6, 0.3],
         }}
         transition={{
           duration: 4,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: 'easeInOut',
         }}
       />
-      
+
       <motion.svg
         viewBox="0 0 500 400"
         className="w-full h-auto relative z-10 gpu-accelerated"
-        style={{ 
+        style={{
           rotate,
-          scale: containerScale
+          scale: containerScale,
         }}
         role="img"
         aria-label="분자 구조 애니메이션"
@@ -134,13 +137,13 @@ export function MolecularAnimation() {
         {/* SVG Filters for glow effects */}
         <defs>
           <filter id="molecular-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-            <feMerge> 
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          
+
           <radialGradient id="atomGradient" cx="30%" cy="30%">
             <stop offset="0%" stopColor="rgba(255,255,255,0.8)" />
             <stop offset="100%" stopColor="rgba(255,255,255,0.1)" />
@@ -150,20 +153,14 @@ export function MolecularAnimation() {
         {/* Render bonds first (behind atoms) */}
         <g className="bonds">
           {molecularData.bonds.map((bond, index) => (
-            <Bond
-              key={`bond-${index}`}
-              {...bond}
-            />
+            <Bond key={`bond-${index}`} {...bond} />
           ))}
         </g>
 
         {/* Render atoms */}
         <g className="atoms">
           {molecularData.atoms.map((atom, index) => (
-            <Atom
-              key={`atom-${index}`}
-              {...atom}
-            />
+            <Atom key={`atom-${index}`} {...atom} />
           ))}
         </g>
 
@@ -180,21 +177,21 @@ export function MolecularAnimation() {
               strokeWidth="1"
               strokeDasharray="2,4"
               className="text-primary-300 dark:text-primary-600"
-              animate={{ 
+              animate={{
                 rotate: [0, 360],
-                scale: [1, 1.1, 1]
+                scale: [1, 1.1, 1],
               }}
               transition={{
                 rotate: {
                   duration: 15 + index * 3,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: 'linear',
                 },
                 scale: {
                   duration: 3,
                   repeat: Infinity,
-                  ease: "easeInOut"
-                }
+                  ease: 'easeInOut',
+                },
               }}
             />
           ))}
@@ -220,7 +217,7 @@ export function MolecularAnimation() {
               duration: 3 + i * 0.5,
               repeat: Infinity,
               delay: i * 0.4,
-              ease: "easeInOut"
+              ease: 'easeInOut',
             }}
           />
         ))}

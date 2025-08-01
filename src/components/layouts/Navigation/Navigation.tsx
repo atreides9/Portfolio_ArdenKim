@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import type { NavItem } from '@/lib/types';
 import { cn } from '@/lib/utils/cn';
 
@@ -16,19 +16,34 @@ const navItems: NavItem[] = [
 export function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   const { scrollY } = useScroll();
 
-  // Handle scroll state
+  // Handle scroll state with direction detection
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setIsScrolled(latest > 50);
+    const currentScrollY = latest;
+
+    // Scroll direction detection
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      // Scrolling down - hide header
+      setIsVisible(false);
+    } else {
+      // Scrolling up - show header
+      setIsVisible(true);
+    }
+
+    // Update scroll state
+    setIsScrolled(currentScrollY > 50);
+    setLastScrollY(currentScrollY);
   });
 
   // Handle active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => document.getElementById(item.id));
+      const sections = navItems.map((item) => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -52,7 +67,7 @@ export function Navigation() {
       const offsetTop = element.offsetTop - 80; // Account for fixed navbar height
       window.scrollTo({
         top: offsetTop,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
     setIsMobileMenuOpen(false);
@@ -61,26 +76,23 @@ export function Navigation() {
   return (
     <motion.header
       initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      animate={{ y: isVisible ? 0 : -100 }}
+      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled 
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-200/50 dark:border-gray-700/50' 
+        isScrolled
+          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl backdrop-saturate-150 shadow-lg border-b border-gray-200/50 dark:border-gray-700/50'
           : 'bg-transparent'
       )}
       role="banner"
     >
-      <nav 
+      <nav
         className="container flex items-center justify-between h-20"
         role="navigation"
         aria-label="메인 네비게이션"
       >
         {/* Logo */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="flex-shrink-0"
-        >
+        <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
           <a
             href="#hero"
             onClick={(e) => handleSmoothScroll(e, 'hero')}
@@ -110,7 +122,7 @@ export function Navigation() {
               >
                 {item.label}
               </a>
-              
+
               {/* Active indicator */}
               {activeSection === item.id && (
                 <motion.div
@@ -130,7 +142,12 @@ export function Navigation() {
             aria-label="다크 모드 토글"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
             </svg>
           </button>
         </div>
@@ -142,28 +159,25 @@ export function Navigation() {
           aria-label="메뉴 열기/닫기"
           aria-expanded={isMobileMenuOpen}
         >
-          <motion.div
-            animate={isMobileMenuOpen ? 'open' : 'closed'}
-            className="w-6 h-6 relative"
-          >
+          <motion.div animate={isMobileMenuOpen ? 'open' : 'closed'} className="w-6 h-6 relative">
             <motion.span
               variants={{
                 closed: { rotate: 0, y: 0 },
-                open: { rotate: 45, y: 8 }
+                open: { rotate: 45, y: 8 },
               }}
               className="absolute top-1 left-0 w-6 h-0.5 bg-current transform origin-center transition-all duration-200"
             />
             <motion.span
               variants={{
                 closed: { opacity: 1 },
-                open: { opacity: 0 }
+                open: { opacity: 0 },
               }}
               className="absolute top-3 left-0 w-6 h-0.5 bg-current transition-all duration-200"
             />
             <motion.span
               variants={{
                 closed: { rotate: 0, y: 0 },
-                open: { rotate: -45, y: -8 }
+                open: { rotate: -45, y: -8 },
               }}
               className="absolute top-5 left-0 w-6 h-0.5 bg-current transform origin-center transition-all duration-200"
             />
@@ -181,17 +195,17 @@ export function Navigation() {
             opacity: 1,
             transition: {
               height: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
-              opacity: { duration: 0.2, delay: 0.1 }
-            }
+              opacity: { duration: 0.2, delay: 0.1 },
+            },
           },
           closed: {
             height: 0,
             opacity: 0,
             transition: {
               height: { duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0.1 },
-              opacity: { duration: 0.2 }
-            }
-          }
+              opacity: { duration: 0.2 },
+            },
+          },
         }}
         className="md:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50"
       >
@@ -209,14 +223,14 @@ export function Navigation() {
                     transition: {
                       delay: index * 0.1 + 0.2,
                       duration: 0.3,
-                      ease: [0.16, 1, 0.3, 1]
-                    }
+                      ease: [0.16, 1, 0.3, 1],
+                    },
                   },
                   closed: {
                     y: -10,
                     opacity: 0,
-                    transition: { duration: 0.2 }
-                  }
+                    transition: { duration: 0.2 },
+                  },
                 }}
               >
                 <a

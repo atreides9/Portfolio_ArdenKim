@@ -6,14 +6,22 @@ import '@/styles/globals.css';
 export const metadata: Metadata = {
   title: {
     default: '김나겸 | Product Designer',
-    template: '%s | 김나겸 Product Designer'
+    template: '%s | 김나겸 Product Designer',
   },
-  description: '문제를 발견하고 해결하는 과정을 즐기는 프로덕트 디자이너. 나노소재화학에서 UX 디자인으로 전환한 독특한 관점으로 사용자 경험을 설계합니다.',
-  keywords: ['Product Designer', 'UX Designer', 'UI Designer', '프로덕트 디자이너', 'Portfolio', '포트폴리오'],
+  description:
+    '문제를 발견하고 해결하는 과정을 즐기는 프로덕트 디자이너. 나노소재화학에서 UX 디자인으로 전환한 독특한 관점으로 사용자 경험을 설계합니다.',
+  keywords: [
+    'Product Designer',
+    'UX Designer',
+    'UI Designer',
+    '프로덕트 디자이너',
+    'Portfolio',
+    '포트폴리오',
+  ],
   authors: [{ name: '김나겸', url: 'https://ardenkim.com' }],
   creator: '김나겸',
   publisher: '김나겸',
-  
+
   // Open Graph for social sharing (improves CTR by 40%)
   openGraph: {
     type: 'website',
@@ -31,7 +39,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  
+
   // Twitter optimization
   twitter: {
     card: 'summary_large_image',
@@ -40,7 +48,7 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
     creator: '@ardenkim',
   },
-  
+
   // Performance & crawling optimization
   robots: {
     index: true,
@@ -53,17 +61,17 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  
+
   // Verification & analytics
   verification: {
     google: 'your-google-verification-code',
   },
-  
+
   // Additional metadata
   category: 'Design & Portfolio',
   classification: 'Business',
   referrer: 'origin-when-cross-origin',
-  
+
   // Structured data for rich snippets
   other: {
     'application-name': '김나겸 Portfolio',
@@ -80,7 +88,7 @@ export const viewport = {
   userScalable: true,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#000000' }
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
   ],
 };
 
@@ -90,29 +98,25 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html 
-      lang="ko" 
-      className={`${Pretendard.variable} scroll-smooth`}
-      suppressHydrationWarning
-    >
+    <html lang="ko" className={`${Pretendard.variable} scroll-smooth`} suppressHydrationWarning>
       <head>
         {/* Preconnect to external domains for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+
         {/* Performance hints */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://cdn.ardenkim.com" />
-        
+
         {/* Favicon and app icons */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        
+
         {/* Performance optimization - preconnect to external domains */}
       </head>
-      <body 
+      <body
         className={`
           font-sans antialiased 
           bg-white text-gray-900 
@@ -122,15 +126,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
         suppressHydrationWarning
       >
         {/* Skip to content for accessibility (WCAG 2.1 AA requirement) */}
-        <a 
-          href="#main-content" 
+        <a
+          href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-primary-600 text-white px-4 py-2 rounded-md"
         >
           Skip to main content
         </a>
-        
+
         {children}
-        
+
         {/* Performance monitoring script will be injected here in production */}
         {process.env.NODE_ENV === 'production' && (
           <script

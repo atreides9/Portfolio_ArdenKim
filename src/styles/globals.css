@@ -1,6 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /* CSS Custom Properties for theme consistency */
 :root {
@@ -8,12 +8,12 @@
   --color-primary-dark: 37 99 235; /* rgb(37 99 235) */
   --color-gray-50: 249 250 251;
   --color-gray-900: 17 24 39;
-  
+
   /* Performance-optimized CSS variables */
   --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-medium: 300ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 500ms cubic-bezier(0.16, 1, 0.3, 1);
-  
+
   /* Layout variables */
   --nav-height: 80px;
   --container-padding: 1.5rem;
@@ -25,43 +25,45 @@
   * {
     @apply border-gray-200;
   }
-  
+
   html {
     /* Improve font rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    
+
     /* Performance: Enable hardware acceleration globally */
     transform: translateZ(0);
     backface-visibility: hidden;
   }
-  
+
   body {
     @apply bg-white text-gray-900;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
-    
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+
     /* Prevent layout shift during font loading */
     font-display: swap;
   }
-  
+
   /* Focus states for accessibility (WCAG 2.1 AA) */
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-primary-600;
   }
-  
+
   /* Remove focus outline for mouse users */
   *:focus:not(:focus-visible) {
     outline: none;
   }
-  
+
   /* Smooth scrolling with performance consideration */
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;
     }
   }
-  
+
   /* Respect user's motion preferences */
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -80,66 +82,66 @@
   .container {
     @apply mx-auto max-w-container px-6 lg:px-8;
   }
-  
+
   /* Section spacing */
   .section {
     @apply py-16 lg:py-24;
   }
-  
+
   /* Button variants */
   .btn {
     @apply inline-flex items-center justify-center rounded-lg px-6 py-3 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
-  
+
   .btn-primary {
     @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
   }
-  
+
   .btn-secondary {
     @apply bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 focus:ring-gray-500 shadow-sm hover:shadow-md;
   }
-  
+
   /* Typography utilities */
   .heading-1 {
     @apply text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight;
   }
-  
+
   .heading-2 {
     @apply text-3xl lg:text-4xl font-bold tracking-tight;
   }
-  
+
   .heading-3 {
     @apply text-2xl lg:text-3xl font-semibold tracking-tight;
   }
-  
+
   /* Card styles */
   .card {
     @apply bg-white rounded-xl shadow-card border border-gray-200 transition-shadow duration-300 hover:shadow-card-hover;
   }
-  
+
   /* Loading states */
   .skeleton {
     @apply animate-pulse bg-gray-200 rounded;
   }
-  
+
   /* Molecular animation styles */
   .molecular-atom {
     @apply fill-primary-500 drop-shadow-sm;
     animation: molecularFloat 6s ease-in-out infinite;
   }
-  
+
   .molecular-bond {
     @apply stroke-primary-400 stroke-2;
     animation: pulse 3s ease-in-out infinite;
   }
-  
+
   /* Performance-optimized grid */
   .projects-grid {
     @apply grid gap-8 md:grid-cols-2;
     /* Use CSS Grid for better performance than Flexbox */
     grid-template-rows: masonry; /* Future-proofing for masonry layout */
   }
-  
+
   /* Skill bar animation */
   .skill-progress {
     @apply bg-primary-500 h-full rounded-full transition-all duration-1000 ease-out;
@@ -155,51 +157,55 @@
     backface-visibility: hidden;
     will-change: transform;
   }
-  
+
   /* Intersection Observer animations */
   .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  
+
   .animate-on-scroll.in-view {
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   /* Text balance for better typography */
   .text-balance {
     text-wrap: balance;
   }
-  
+
   /* Hide scrollbar but keep functionality */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
+
   /* Dark mode utilities */
   .dark-mode-transition {
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 }
 
 /* Performance optimizations for animations */
 @keyframes molecularFloat {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg); 
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
   }
-  33% { 
-    transform: translateY(-8px) rotate(120deg); 
+  33% {
+    transform: translateY(-8px) rotate(120deg);
   }
-  66% { 
-    transform: translateY(4px) rotate(240deg); 
+  66% {
+    transform: translateY(4px) rotate(240deg);
   }
 }
 
@@ -219,7 +225,7 @@
   .no-print {
     display: none !important;
   }
-  
+
   body {
     background: white !important;
     color: black !important;
@@ -231,7 +237,7 @@
   .btn-primary {
     @apply border-2 border-black;
   }
-  
+
   .card {
     @apply border-2 border-gray-800;
   }

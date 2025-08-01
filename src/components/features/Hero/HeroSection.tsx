@@ -2,14 +2,14 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { MolecularAnimation } from './MolecularAnimation';
 import { cn } from '@/lib/utils/cn';
+import { MolecularAnimation } from './MolecularAnimation';
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end start']
+    offset: ['start start', 'end start'],
   });
 
   // Performance-optimized scroll animations
@@ -19,9 +19,9 @@ export function HeroSection() {
   const handleScrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
     if (projectsSection) {
-      projectsSection.scrollIntoView({ 
+      projectsSection.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
     }
   };
@@ -29,9 +29,9 @@ export function HeroSection() {
   const handleScrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      contactSection.scrollIntoView({ 
+      contactSection.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
     }
   };
@@ -45,8 +45,8 @@ export function HeroSection() {
     >
       {/* Background gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/50 dark:to-gray-900/50" />
-      
-      <motion.div 
+
+      <motion.div
         style={{ opacity, scale }}
         className="relative z-10 flex min-h-screen items-center"
       >
@@ -95,8 +95,10 @@ export function HeroSection() {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 max-w-2xl"
               >
-                나노소재화학에서 프로덕트 디자인으로. 과학적 사고와 창의적 문제해결이 만나는 지점에서 
-                <strong className="text-gray-900 dark:text-white"> 사용자 경험을 설계</strong>합니다.
+                나노소재화학에서 프로덕트 디자인으로. 과학적 사고와 창의적 문제해결이 만나는
+                지점에서
+                <strong className="text-gray-900 dark:text-white"> 사용자 경험을 설계</strong>
+                합니다.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -155,7 +157,7 @@ export function HeroSection() {
                 {[
                   { value: '3+', label: '프로젝트' },
                   { value: '95%', label: '사용자 만족도' },
-                  { value: '70%', label: '효율성 개선' }
+                  { value: '70%', label: '효율성 개선' },
                 ].map((stat, index) => (
                   <div key={stat.label} className="text-center">
                     <motion.div
@@ -184,7 +186,7 @@ export function HeroSection() {
               <div className="relative">
                 {/* Glow effect */}
                 <div className="absolute inset-0 rounded-full bg-primary-500/10 blur-3xl scale-150" />
-                
+
                 {/* Molecular animation container */}
                 <div className="relative z-10">
                   <MolecularAnimation />

@@ -17,14 +17,14 @@ class Portfolio {
   setupIntersectionObserver() {
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: '0px 0px -50px 0px',
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          
+
           // Trigger skill bar animations
           if (entry.target.classList.contains('skills')) {
             this.animateSkillBars();
@@ -34,8 +34,10 @@ class Portfolio {
     }, observerOptions);
 
     // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, section');
-    animatedElements.forEach(el => {
+    const animatedElements = document.querySelectorAll(
+      '.fade-in, .slide-in-left, .slide-in-right, section'
+    );
+    animatedElements.forEach((el) => {
       el.classList.add('fade-in');
       observer.observe(el);
     });
@@ -45,19 +47,19 @@ class Portfolio {
   setupNavigation() {
     const nav = document.querySelector('.nav');
     const navLinks = document.querySelectorAll('.nav-menu a');
-    
+
     // Active navigation highlighting
     const updateActiveNav = () => {
       const sections = document.querySelectorAll('section');
       const scrollPosition = window.scrollY + 100;
 
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
-        
+
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          navLinks.forEach(link => {
+          navLinks.forEach((link) => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${sectionId}`) {
               link.classList.add('active');
@@ -98,18 +100,18 @@ class Portfolio {
 
     const animateMolecules = () => {
       const time = Date.now() * 0.001;
-      
+
       atoms.forEach((atom, index) => {
         const x = Math.sin(time + index) * 10;
         const y = Math.cos(time + index * 0.7) * 8;
-        
+
         atom.setAttribute('transform', `translate(${x}, ${y})`);
       });
 
       // Transform molecules to network pattern on scroll
       const scrollProgress = Math.min(window.scrollY / (window.innerHeight * 0.5), 1);
       const transformProgress = Math.sin(scrollProgress * Math.PI * 0.5);
-      
+
       molecules.style.transform = `scale(${1 + transformProgress * 0.2}) rotate(${transformProgress * 20}deg)`;
       molecules.style.opacity = 1 - scrollProgress * 0.3;
 
@@ -120,7 +122,7 @@ class Portfolio {
 
     // Pause animation when not visible
     const moleculeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) {
           cancelAnimationFrame(animationId);
         } else {
@@ -139,12 +141,12 @@ class Portfolio {
 
   animateSkillBars() {
     if (this.skillBarsAnimated) return;
-    
+
     const skillBars = document.querySelectorAll('.skill-progress');
-    
+
     skillBars.forEach((bar, index) => {
       const progress = bar.getAttribute('data-progress');
-      
+
       setTimeout(() => {
         bar.style.width = `${progress}%`;
       }, index * 100);
@@ -156,11 +158,11 @@ class Portfolio {
   // Project card interactions
   setupProjectCards() {
     const projectCards = document.querySelectorAll('.project-card');
-    
-    projectCards.forEach(card => {
+
+    projectCards.forEach((card) => {
       card.addEventListener('mouseenter', (e) => {
         const metrics = e.target.querySelectorAll('.metric-value');
-        metrics.forEach(metric => {
+        metrics.forEach((metric) => {
           metric.style.transform = 'scale(1.1)';
           metric.style.color = 'var(--color-accent)';
         });
@@ -168,7 +170,7 @@ class Portfolio {
 
       card.addEventListener('mouseleave', (e) => {
         const metrics = e.target.querySelectorAll('.metric-value');
-        metrics.forEach(metric => {
+        metrics.forEach((metric) => {
           metric.style.transform = 'scale(1)';
           metric.style.color = 'var(--color-primary)';
         });
@@ -186,10 +188,10 @@ class Portfolio {
         ripple.style.top = e.offsetY + 'px';
         ripple.style.width = ripple.style.height = '20px';
         ripple.style.marginLeft = ripple.style.marginTop = '-10px';
-        
+
         e.target.style.position = 'relative';
         e.target.appendChild(ripple);
-        
+
         setTimeout(() => {
           ripple.remove();
         }, 600);
@@ -200,20 +202,20 @@ class Portfolio {
   // Smooth scrolling for navigation links
   setupSmoothScrolling() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
-    
-    navLinks.forEach(link => {
+
+    navLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        
+
         const targetId = link.getAttribute('href');
         const targetSection = document.querySelector(targetId);
-        
+
         if (targetSection) {
           const offsetTop = targetSection.offsetTop - 80; // Account for fixed nav
-          
+
           window.scrollTo({
             top: offsetTop,
-            behavior: 'smooth'
+            behavior: 'smooth',
           });
         }
       });
@@ -239,15 +241,14 @@ const utils = {
   // Throttle function for scroll events
   throttle(func, limit) {
     let inThrottle;
-    return function() {
+    return function () {
       const args = arguments;
-      const context = this;
       if (!inThrottle) {
-        func.apply(context, args);
+        func.apply(this, args);
         inThrottle = true;
-        setTimeout(() => inThrottle = false, limit);
+        setTimeout(() => (inThrottle = false), limit);
       }
-    }
+    };
   },
 
   // Check if element is in viewport
@@ -259,7 +260,7 @@ const utils = {
       rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
-  }
+  },
 };
 
 // Parallax effect for hero section
@@ -271,11 +272,11 @@ class ParallaxEffect {
 
   init() {
     if (!this.heroSection) return;
-    
+
     const handleParallax = utils.throttle(() => {
       const scrolled = window.pageYOffset;
       const parallaxSpeed = 0.5;
-      
+
       this.heroSection.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
     }, 16);
 
@@ -291,19 +292,19 @@ class DataVisualization {
 
   setupCounterAnimations() {
     const counters = document.querySelectorAll('.metric-value');
-    
+
     const animateCounter = (counter) => {
       const target = counter.textContent;
       const isPercentage = target.includes('%');
       const isMultiplier = target.includes('x');
       const numericValue = parseInt(target.replace(/[^\d]/g, ''));
-      
+
       let current = 0;
       const increment = numericValue / 60; // 60 frames for 1 second
-      
+
       const updateCounter = () => {
         current += increment;
-        
+
         if (current < numericValue) {
           if (isPercentage) {
             counter.textContent = Math.ceil(current) + '%';
@@ -317,20 +318,23 @@ class DataVisualization {
           counter.textContent = target; // Final value
         }
       };
-      
+
       updateCounter();
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-    counters.forEach(counter => observer.observe(counter));
+    counters.forEach((counter) => observer.observe(counter));
   }
 }
 

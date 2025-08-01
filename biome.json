@@ -1,8 +1,6 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-  "organizeImports": {
-    "enabled": true
-  },
+  "$schema": "https://biomejs.dev/schemas/2.1.3/schema.json",
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
@@ -53,7 +51,7 @@
     "formatter": {
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
-      "trailingComma": "es5",
+      "trailingCommas": "es5",
       "semicolons": "always",
       "arrowParentheses": "always",
       "bracketSpacing": true,
@@ -63,7 +61,19 @@
     }
   },
   "files": {
-    "include": ["src/**/*", "app/**/*", "components/**/*", "lib/**/*", "*.ts", "*.tsx", "*.js", "*.jsx"],
-    "ignore": [".next/**", "node_modules/**", "dist/**", "build/**"]
+    "includes": [
+      "**/src/**/*",
+      "**/app/**/*",
+      "**/components/**/*",
+      "**/lib/**/*",
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.jsx",
+      "!**/.next/**",
+      "!**/node_modules/**",
+      "!**/dist/**",
+      "!**/build/**"
+    ]
   }
 }

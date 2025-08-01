@@ -20,7 +20,7 @@ export interface ProjectMetric {
   readonly description?: string;
 }
 
-export type ProjectCategory = 
+export type ProjectCategory =
   | 'ux-research'
   | 'product-strategy'
   | 'data-visualization'
@@ -34,7 +34,7 @@ export interface Skill {
   readonly description?: string;
 }
 
-export type SkillCategory = 
+export type SkillCategory =
   | 'design-tools'
   | 'development'
   | 'collaboration'

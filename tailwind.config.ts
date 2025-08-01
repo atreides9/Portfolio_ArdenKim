@@ -32,7 +32,7 @@ const config: Config = {
           900: '#111827',
         },
       },
-      
+
       // Performance-optimized animations
       animation: {
         'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
@@ -42,7 +42,7 @@ const config: Config = {
         'molecular-rotate': 'molecularRotate 20s linear infinite',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
-      
+
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
@@ -65,12 +65,12 @@ const config: Config = {
           '100%': { transform: 'rotate(360deg)' },
         },
       },
-      
-      // Typography scale for readability  
+
+      // Typography scale for readability
       fontFamily: {
         sans: [
           'system-ui',
-          '-apple-system', 
+          '-apple-system',
           'BlinkMacSystemFont',
           'Segoe UI',
           'Roboto',
@@ -81,42 +81,42 @@ const config: Config = {
           'Apple Color Emoji',
           'Segoe UI Emoji',
           'Segoe UI Symbol',
-          'Noto Color Emoji'
+          'Noto Color Emoji',
         ],
       },
       fontSize: {
-        'hero': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        hero: ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
         'heading-1': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
         'heading-2': ['2.25rem', { lineHeight: '1.3' }],
         'heading-3': ['1.875rem', { lineHeight: '1.4' }],
       },
-      
+
       // Spacing system
       spacing: {
         '18': '4.5rem',
         '88': '22rem',
         '128': '32rem',
       },
-      
+
       // Container max-widths
       maxWidth: {
-        'container': '1200px',
+        container: '1200px',
       },
-      
+
       // Performance-first shadows
       boxShadow: {
-        'card': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        card: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
         'card-hover': '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-        'molecular': '0 0 20px rgba(59, 130, 246, 0.3)',
+        molecular: '0 0 20px rgba(59, 130, 246, 0.3)',
       },
     },
   },
   plugins: [
     // Custom plugin for performance utilities
-    function({ addUtilities }: any) {
+    ({ addUtilities }: any) => {
       addUtilities({
         '.gpu-accelerated': {
-          'transform': 'translateZ(0)',
+          transform: 'translateZ(0)',
           'backface-visibility': 'hidden',
           'will-change': 'transform',
         },
