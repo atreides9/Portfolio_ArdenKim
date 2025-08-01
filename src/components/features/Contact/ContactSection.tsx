@@ -14,14 +14,14 @@ const contactMethods = [
   {
     icon: '💼',
     title: 'LinkedIn',
-    value: 'linkedin.com/in/sunmin-kim',
-    href: 'https://linkedin.com/in/sunmin-kim',
+    value: 'linkedin.com/in/Arden-Kim',
+    href: 'https://www.linkedin.com/in/arden-kim-12196628b/',
     description: '전문적인 네트워킹',
   },
   {
     icon: '🎨',
     title: 'Behance',
-    value: 'behance.net/sunminkim',
+    value: 'behance.net/Arden Kim',
     href: 'https://behance.net/sunminkim',
     description: '더 많은 디자인 작업물',
   },
@@ -32,7 +32,7 @@ export function ContactSection() {
 
   const handleEmailCopy = async () => {
     try {
-      await navigator.clipboard.writeText('sunmin@example.com');
+      await navigator.clipboard.writeText('lovetung18@gmail.com');
       setCopiedEmail(true);
       setTimeout(() => setCopiedEmail(false), 2000);
     } catch (err) {
