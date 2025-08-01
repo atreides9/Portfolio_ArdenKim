@@ -1,4 +1,4 @@
-# 김선민 - Product Designer Portfolio
+# Arden Kim - Product Designer Portfolio
 
 > 과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계하는 프로덕트 디자이너의 포트폴리오
 
