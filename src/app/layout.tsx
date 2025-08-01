@@ -5,29 +5,29 @@ import '@/styles/globals.css';
 // Performance-optimized metadata for SEO (target Lighthouse 95+)
 export const metadata: Metadata = {
   title: {
-    default: '김선민 | Product Designer',
-    template: '%s | 김선민 Product Designer'
+    default: '김나겸 | Product Designer',
+    template: '%s | 김나겸 Product Designer'
   },
   description: '문제를 발견하고 해결하는 과정을 즐기는 프로덕트 디자이너. 나노소재화학에서 UX 디자인으로 전환한 독특한 관점으로 사용자 경험을 설계합니다.',
   keywords: ['Product Designer', 'UX Designer', 'UI Designer', '프로덕트 디자이너', 'Portfolio', '포트폴리오'],
-  authors: [{ name: '김선민', url: 'https://ardenkim.com' }],
-  creator: '김선민',
-  publisher: '김선민',
+  authors: [{ name: '김나겸', url: 'https://ardenkim.com' }],
+  creator: '김나겸',
+  publisher: '김나겸',
   
   // Open Graph for social sharing (improves CTR by 40%)
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
     url: 'https://ardenkim.com',
-    title: '김선민 | Product Designer',
+    title: '김나겸 | Product Designer',
     description: '과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계합니다.',
-    siteName: '김선민 Portfolio',
+    siteName: '김나겸 Portfolio',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: '김선민 Product Designer Portfolio',
+        alt: '김나겸 Product Designer Portfolio',
       },
     ],
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   // Twitter optimization
   twitter: {
     card: 'summary_large_image',
-    title: '김선민 | Product Designer',
+    title: '김나겸 | Product Designer',
     description: '과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계합니다.',
     images: ['/og-image.jpg'],
     creator: '@ardenkim',
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   
   // Structured data for rich snippets
   other: {
-    'application-name': '김선민 Portfolio',
+    'application-name': '김나겸 Portfolio',
     'theme-color': '#3b82f6',
     'color-scheme': 'light dark',
   },

@@ -9,10 +9,10 @@ import { Footer } from '@/components/layouts/Footer/Footer';
 
 // Page-specific metadata for better SEO
 export const metadata: Metadata = {
-  title: '김선민 | Product Designer Portfolio',
-  description: '과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계하는 프로덕트 디자이너 김선민의 포트폴리오입니다.',
+  title: '김나겸 | Product Designer Portfolio',
+  description: '과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계하는 프로덕트 디자이너 김나겸의 포트폴리오입니다.',
   openGraph: {
-    title: '김선민 | Product Designer Portfolio',
+    title: '김나겸 | Product Designer Portfolio',
     description: '과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계합니다.',
     url: 'https://ardenkim.com',
     type: 'website',

@@ -68,7 +68,7 @@ export function Footer() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-2"
             >
-              <h3 className="text-2xl font-bold mb-4">김선민</h3>
+              <h3 className="text-2xl font-bold mb-4">김나겸</h3>
               <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
                 과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계하는 
                 프로덕트 디자이너입니다.
@@ -130,7 +130,7 @@ export function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm text-gray-400">
-              <p>&copy; {currentYear} 김선민. All rights reserved.</p>
+              <p>&copy; {currentYear} 김나겸. All rights reserved.</p>
               <div className="flex items-center space-x-4">
                 <a 
                   href="#" 

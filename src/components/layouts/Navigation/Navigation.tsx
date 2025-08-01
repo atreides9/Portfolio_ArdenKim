@@ -87,7 +87,7 @@ export function Navigation() {
             className="text-2xl font-bold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg px-2 py-1"
             aria-label="홈으로 이동"
           >
-            김선민
+            김나겸
           </a>
         </motion.div>
 

@@ -129,7 +129,7 @@ export function AboutSection() {
               사용자의 진짜 문제를 해결하는 솔루션을 만들어갑니다."
             </blockquote>
             <cite className="block mt-4 text-primary-600 dark:text-primary-400 font-medium">
-              - 김선민, Product Designer
+              - 김나겸, Product Designer
             </cite>
           </div>
         </motion.div>
