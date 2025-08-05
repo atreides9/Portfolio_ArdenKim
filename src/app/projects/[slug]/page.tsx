@@ -121,17 +121,16 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 모바일 화면 디자인
               </h2>
-              <div className="flex justify-center">
-                <div className="relative max-w-md mx-auto">
-                  <Image
-                    src="/images/projects/vertical long_web ver.png"
-                    alt="Starbucks 앱 리디자인 - 모바일 세로형 화면"
-                    width={400}
-                    height={800}
-                    className="rounded-2xl shadow-2xl"
-                    sizes="(max-width: 768px) 80vw, 400px"
-                  />
-                </div>
+              <div className="relative w-full">
+                <Image
+                  src="/images/projects/vertical long_web ver.png"
+                  alt="Starbucks 앱 리디자인 - 모바일 세로형 화면"
+                  width={1200}
+                  height={2400}
+                  className="w-full h-auto rounded-2xl shadow-2xl"
+                  sizes="100vw"
+                  priority
+                />
               </div>
             </div>
           )}
