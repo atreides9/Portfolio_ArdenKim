@@ -42,9 +42,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
   };
 
   const handleProjectClick = () => {
-    if (project.url) {
-      window.open(project.url, '_blank', 'noopener,noreferrer');
-    }
+    // Navigate to project detail page instead of external URL
+    window.location.href = `/projects/${project.id}`;
   };
 
   return (

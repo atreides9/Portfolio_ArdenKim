@@ -204,13 +204,13 @@ export function ContactSection() {
 
                   <div className="flex flex-col sm:flex-row gap-3">
                     <a
-                      href="mailto:sunmin@example.com?subject=프로젝트 협업 문의"
+                      href="mailto:lovetung18@gmail.com?subject=프로젝트 협업 문의"
                       className="btn btn-primary text-center"
                     >
                       프로젝트 문의하기
                     </a>
                     <a
-                      href="https://calendly.com/sunmin-kim"
+                      href="https://calendly.com/Arden-kim"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-secondary text-center"
