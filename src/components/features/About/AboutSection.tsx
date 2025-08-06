@@ -94,13 +94,13 @@ export function AboutSection() {
                 }`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-4 w-8 h-8 bg-white border-4 border-primary-500 rounded-full flex items-center justify-center md:left-1/2 md:-translate-x-4 z-10">
-                  <span className="text-xl">{item.icon}</span>
+                <div className="absolute left-4 w-12 h-12 bg-white dark:bg-gray-800 border-4 border-primary-500 dark:border-primary-400 rounded-full flex items-center justify-center md:left-1/2 md:-translate-x-6 z-10">
+                  <span className="text-3xl">{item.icon}</span>
                 </div>
 
                 {/* Content */}
                 <div
-                  className={`w-full md:w-5/12 ${index % 2 === 0 ? 'ml-16 md:ml-0 md:pr-16' : 'ml-16 md:ml-0 md:pl-16'}`}
+                  className={`w-full md:w-5/12 ${index % 2 === 0 ? 'ml-20 md:ml-0 md:pr-16' : 'ml-20 md:ml-0 md:pl-16'}`}
                 >
                   <motion.div whileHover={{ scale: 1.02 }} className="card p-6 h-full">
                     <h3 className="heading-3 text-gray-900 dark:text-white mb-4">{item.title}</h3>
