@@ -94,33 +94,16 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           </div>
         </motion.div>
 
-        {/* Project Images */}
+          {/* Project Images */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: prefersReducedMotion ? 0.2 : 0.8, delay: prefersReducedMotion ? 0 : 0.2 }}
           className="mb-16"
         >
-          {/* Main Hero Image */}
-          <div className="relative aspect-[16/10] mb-8 rounded-2xl overflow-hidden">
-            <Image
-              src={project.imageUrl}
-              alt={`${project.title} 메인 이미지`}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-              placeholder="blur"
-              blurDataURL={project.blurDataURL}
-            />
-          </div>
-
           {/* Vertical Long Web Version Image - Starbucks specific */}
           {project.id === 'starbucks-redesign' && (
             <div className="relative mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                모바일 화면 디자인
-              </h2>
               <div className="relative w-full">
                 <Image
                   src="/images/projects/vertical long_web ver.png"
