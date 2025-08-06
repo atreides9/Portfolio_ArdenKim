@@ -83,7 +83,7 @@ export function HeroSection() {
                     Product Designer
                   </span>
                   <span className="block text-2xl font-medium text-gray-600 dark:text-gray-300 sm:text-3xl lg:text-4xl mt-2">
-                    문제를 발견하고 해결하는 과정을 즐기는 사람
+                    문제를 발견하고 해결하는 과정을 즐기는
                   </span>
                 </motion.h1>
               </div>

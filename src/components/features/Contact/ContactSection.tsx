@@ -7,8 +7,8 @@ const contactMethods = [
   {
     icon: '📧',
     title: 'Email',
-    value: 'sunmin@example.com',
-    href: 'mailto:sunmin@example.com',
+    value: 'lovetung18@gmail.com',
+    href: 'mailto:lovetung18@gmail.com',
     description: '프로젝트 문의 및 협업 제안',
   },
   {
@@ -22,7 +22,7 @@ const contactMethods = [
     icon: '🎨',
     title: 'Behance',
     value: 'behance.net/Arden Kim',
-    href: 'https://behance.net/sunminkim',
+    href: 'https://www.behance.net/lovetung18bbf4',
     description: '더 많은 디자인 작업물',
   },
 ];
@@ -197,7 +197,7 @@ export function ContactSection() {
                   className="pt-6 border-t border-gray-200 dark:border-gray-600"
                 >
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                    프로젝트 상담은 언제나 무료입니다.
+                    프로젝트 상담은 언제나 환영입니다.
                     <br className="hidden sm:block" />
                     작은 아이디어라도 함께 발전시켜 나가요! ✨
                   </p>
