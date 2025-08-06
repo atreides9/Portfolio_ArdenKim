@@ -82,7 +82,9 @@ export function HeroSection() {
                     Product Designer
                   </span>
                   <span className="block text-2xl font-medium text-gray-600 dark:text-gray-300 sm:text-3xl lg:text-4xl mt-2">
-                    문제를 발견하고 해결하는 과정을 즐기는
+                    화학 연구에서 배운 체계적 사고로
+                    복잡한 사용자 문제를 분자 단위로 분해하고
+                    새로운 결합을 통해 솔루션을 설계합니다
                   </span>
                 </motion.h1>
               </div>

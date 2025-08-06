@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { SkillMolecule } from './SkillMolecule';
 
 const storyItems = [
   {
@@ -24,6 +25,29 @@ const storyItems = [
       '과학적 분석력과 창의적 사고를 결합하여 사용자의 문제를 근본적으로 해결하는 디자인 솔루션을 만들어갑니다.',
     skills: ['사용자 경험 설계', '인터랙션 디자인', '비즈니스 임팩트', '팀 협업'],
   },
+];
+
+// Skill molecule configuration
+const skillsData = [
+  { name: '분석적 사고', level: 95, category: 'core' as const },
+  { name: 'UX 리서치', level: 88, category: 'design' as const },
+  { name: '프로토타이핑', level: 82, category: 'design' as const },
+  { name: '시스템 사고', level: 90, category: 'core' as const },
+  { name: '인터랙션 디자인', level: 85, category: 'design' as const },
+  { name: '문제 해결', level: 92, category: 'soft' as const },
+  { name: '데이터 해석', level: 87, category: 'tech' as const },
+  { name: '팀 협업', level: 89, category: 'soft' as const },
+];
+
+const skillConnections = [
+  { from: 0, to: 3, strength: 0.9 }, // 분석적 사고 ↔ 시스템 사고
+  { from: 0, to: 6, strength: 0.8 }, // 분석적 사고 ↔ 데이터 해석
+  { from: 1, to: 2, strength: 0.7 }, // UX 리서치 ↔ 프로토타이핑
+  { from: 1, to: 4, strength: 0.8 }, // UX 리서치 ↔ 인터랙션 디자인
+  { from: 2, to: 4, strength: 0.9 }, // 프로토타이핑 ↔ 인터랙션 디자인
+  { from: 3, to: 5, strength: 0.8 }, // 시스템 사고 ↔ 문제 해결
+  { from: 5, to: 7, strength: 0.7 }, // 문제 해결 ↔ 팀 협업
+  { from: 6, to: 0, strength: 0.6 }, // 데이터 해석 ↔ 분석적 사고
 ];
 
 export function AboutSection() {
@@ -106,6 +130,30 @@ export function AboutSection() {
             ))}
           </div>
         </div>
+
+        {/* Skills Visualization */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mt-20"
+        >
+          <div className="text-center mb-12">
+            <h3 className="heading-3 text-gray-900 dark:text-white mb-4">
+              스킬 시너지
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              각 스킬은 독립적이지 않습니다. 서로 연결되고 상호작용하며 더 큰 가치를 만들어냅니다.
+            </p>
+          </div>
+          
+          <SkillMolecule 
+            skills={skillsData}
+            connections={skillConnections}
+            className="mb-16"
+          />
+        </motion.div>
 
         {/* Philosophy Statement */}
         <motion.div

@@ -33,10 +33,10 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>프로젝트로 돌아가기</span>
+              <span>돌아가기</span>
             </Link>
             
-            {project.url && (
+            {/* {project.url && (
               <a
                 href={project.url}
                 target="_blank"
@@ -46,7 +46,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 <span>라이브 보기</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
-            )}
+            )} */}
           </div>
         </div>
       </header>

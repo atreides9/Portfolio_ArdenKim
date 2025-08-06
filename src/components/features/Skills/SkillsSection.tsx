@@ -175,7 +175,7 @@ export function SkillsSection() {
             Skills
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            디자인과 개발을 아우르는 역량. 사용자 중심의 디자인 사고와 기술적 구현 능력을 바탕으로
+            사용자 중심의 디자인 사고와 기술적 구현 능력을 바탕으로
             완성도 높은 솔루션을 제공합니다.
           </p>
         </motion.div>
