@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { cn } from '@/lib/utils/cn';
-import { MolecularAnimation } from './MolecularAnimation';
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,7 +50,7 @@ export function HeroSection() {
         className="relative z-10 flex min-h-screen items-center"
       >
         <div className="container">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+          <div className="flex justify-center items-center">
             {/* Text Content */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -176,23 +175,6 @@ export function HeroSection() {
               </motion.div>
             </motion.div>
 
-            {/* Molecular Animation */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative flex items-center justify-center lg:justify-end"
-            >
-              <div className="relative">
-                {/* Glow effect */}
-                <div className="absolute inset-0 rounded-full bg-primary-500/10 blur-3xl scale-150" />
-
-                {/* Molecular animation container */}
-                <div className="relative z-10">
-                  <MolecularAnimation />
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </motion.div>

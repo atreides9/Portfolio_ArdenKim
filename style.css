@@ -267,44 +267,6 @@ section {
   align-items: center;
 }
 
-.molecular-structure {
-  width: 400px;
-  height: 300px;
-  position: relative;
-}
-
-.molecule-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.atom {
-  fill: var(--color-primary);
-  stroke: var(--color-white);
-  stroke-width: 2;
-  animation: atomPulse 3s ease-in-out infinite;
-}
-
-.atom:nth-child(odd) {
-  animation-delay: -1s;
-}
-
-.bond {
-  stroke: var(--color-gray-400);
-  stroke-width: 2;
-  opacity: 0.7;
-  animation: bondGlow 4s ease-in-out infinite;
-}
-
-@keyframes atomPulse {
-  0%, 100% { r: 8; opacity: 1; }
-  50% { r: 12; opacity: 0.8; }
-}
-
-@keyframes bondGlow {
-  0%, 100% { stroke-width: 2; opacity: 0.7; }
-  50% { stroke-width: 3; opacity: 1; }
-}
 
 /* About Section */
 .about {

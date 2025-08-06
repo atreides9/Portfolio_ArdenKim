@@ -124,16 +124,6 @@
     @apply animate-pulse bg-gray-200 rounded;
   }
 
-  /* Molecular animation styles */
-  .molecular-atom {
-    @apply fill-primary-500 drop-shadow-sm;
-    animation: molecularFloat 6s ease-in-out infinite;
-  }
-
-  .molecular-bond {
-    @apply stroke-primary-400 stroke-2;
-    animation: pulse 3s ease-in-out infinite;
-  }
 
   /* Performance-optimized grid */
   .projects-grid {
@@ -151,12 +141,6 @@
 
 /* Utility layer - Helper classes */
 @layer utilities {
-  /* Performance utilities */
-  .gpu-accelerated {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    will-change: transform;
-  }
 
   /* Intersection Observer animations */
   .animate-on-scroll {
@@ -195,19 +179,6 @@
   }
 }
 
-/* Performance optimizations for animations */
-@keyframes molecularFloat {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  33% {
-    transform: translateY(-8px) rotate(120deg);
-  }
-  66% {
-    transform: translateY(4px) rotate(240deg);
-  }
-}
 
 @keyframes fadeInUp {
   from {
