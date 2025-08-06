@@ -92,6 +92,8 @@ export const viewport = {
   ],
 };
 
+import { ClientProviders } from '@/components/providers/ClientProviders';
+
 interface RootLayoutProps {
   children: React.ReactNode;
 }
@@ -133,7 +135,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           Skip to main content
         </a>
 
-        {children}
+        <ClientProviders>
+          {children}
+        </ClientProviders>
 
         {/* Performance monitoring script will be injected here in production */}
         {process.env.NODE_ENV === 'production' && (

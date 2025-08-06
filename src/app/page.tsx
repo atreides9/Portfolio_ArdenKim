@@ -5,7 +5,6 @@ import { HeroSection } from '@/components/features/Hero/HeroSection';
 import { ProjectsSection } from '@/components/features/Projects/ProjectsSection';
 import { SkillsSection } from '@/components/features/Skills/SkillsSection';
 import { Footer } from '@/components/layouts/Footer/Footer';
-import { Navigation } from '@/components/layouts/Navigation/Navigation';
 
 // Page-specific metadata for better SEO
 export const metadata: Metadata = {
@@ -23,9 +22,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* Navigation with performance optimizations */}
-      <Navigation />
-
       {/* Main content with semantic structure for accessibility */}
       <main id="main-content" className="overflow-x-hidden">
         {/* Hero section with molecular animation - GPU accelerated */}
