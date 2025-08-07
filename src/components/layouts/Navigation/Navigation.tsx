@@ -2,6 +2,7 @@
 
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import type { NavItem } from '@/lib/types';
 import { cn } from '@/lib/utils/cn';
 import { useTheme } from '@/components/providers/ThemeProvider';
@@ -21,8 +22,10 @@ export function Navigation() {
   const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const pathname = usePathname();
 
   const { scrollY } = useScroll();
+  const isProjectPage = pathname.startsWith('/projects/');
 
   // Handle scroll state with direction detection
   useMotionValueEvent(scrollY, 'change', (latest) => {
@@ -64,6 +67,19 @@ export function Navigation() {
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
+    
+    // If we're on a project page, navigate to home first
+    if (isProjectPage) {
+      if (sectionId === 'hero') {
+        window.location.href = '/';
+      } else {
+        window.location.href = `/#${sectionId}`;
+      }
+      setIsMobileMenuOpen(false);
+      return;
+    }
+    
+    // Normal smooth scroll behavior for homepage
     const element = document.getElementById(sectionId);
     if (element) {
       const offsetTop = element.offsetTop - 80; // Account for fixed navbar height
@@ -96,7 +112,7 @@ export function Navigation() {
         {/* Logo */}
         <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
           <a
-            href="#hero"
+            href={isProjectPage ? '/' : '#hero'}
             onClick={(e) => handleSmoothScroll(e, 'hero')}
             className="text-2xl font-bold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg px-2 py-1"
             aria-label="홈으로 이동"
@@ -110,23 +126,23 @@ export function Navigation() {
           {navItems.map((item) => (
             <motion.div key={item.id} className="relative">
               <a
-                href={item.href}
+                href={isProjectPage ? (item.id === 'hero' ? '/' : `/#${item.id}`) : item.href}
                 onClick={(e) => handleSmoothScroll(e, item.id)}
                 className={cn(
                   'relative px-4 py-2 rounded-lg font-medium transition-all duration-200',
                   'hover:text-primary-600 dark:hover:text-primary-400',
                   'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
-                  activeSection === item.id
+                  activeSection === item.id && !isProjectPage
                     ? 'text-primary-600 dark:text-primary-400'
                     : 'text-gray-700 dark:text-gray-300'
                 )}
-                aria-current={activeSection === item.id ? 'page' : undefined}
+                aria-current={activeSection === item.id && !isProjectPage ? 'page' : undefined}
               >
                 {item.label}
               </a>
 
               {/* Active indicator */}
-              {activeSection === item.id && (
+              {activeSection === item.id && !isProjectPage && (
                 <motion.div
                   layoutId="activeIndicator"
                   className="absolute inset-0 bg-primary-100 dark:bg-primary-900/30 rounded-lg -z-10"
@@ -250,17 +266,17 @@ export function Navigation() {
                 }}
               >
                 <a
-                  href={item.href}
+                  href={isProjectPage ? (item.id === 'hero' ? '/' : `/#${item.id}`) : item.href}
                   onClick={(e) => handleSmoothScroll(e, item.id)}
                   className={cn(
                     'block px-4 py-3 rounded-lg font-medium transition-all duration-200',
                     'hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20',
                     'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
-                    activeSection === item.id
+                    activeSection === item.id && !isProjectPage
                       ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20'
                       : 'text-gray-700 dark:text-gray-300'
                   )}
-                  aria-current={activeSection === item.id ? 'page' : undefined}
+                  aria-current={activeSection === item.id && !isProjectPage ? 'page' : undefined}
                 >
                   {item.label}
                 </a>
