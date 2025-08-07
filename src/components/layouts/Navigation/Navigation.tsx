@@ -1,11 +1,12 @@
 'use client';
 
-import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import type { NavItem } from '@/lib/types';
 import { cn } from '@/lib/utils/cn';
 import { useTheme } from '@/components/providers/ThemeProvider';
+import { useSmartHeader } from '@/lib/hooks/useSmartHeader';
 
 const navItems: NavItem[] = [
   { id: 'hero', label: 'Home', href: '#hero' },
@@ -18,26 +19,22 @@ const navItems: NavItem[] = [
 export function Navigation() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [activeSection, setActiveSection] = useState('hero');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
-
-  const { scrollY } = useScroll();
+  
   const isProjectPage = pathname.startsWith('/projects/');
-
-  // Handle scroll state - always keep header visible
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    const currentScrollY = latest;
-
-    // Always keep header visible
-    setIsVisible(true);
-
-    // Update scroll state for backdrop blur effect
-    setIsScrolled(currentScrollY > 50);
-    setLastScrollY(currentScrollY);
+  const isHomePage = pathname === '/';
+  
+  // Use smart header only on homepage, always visible on other pages
+  const { isVisible, isScrolled } = useSmartHeader({
+    hideDelay: 3000,
+    topZone: 100,
+    scrollThreshold: 50
   });
+  
+  // For non-homepage, always show header
+  const shouldShowHeader = !isHomePage || isVisible;
+  const shouldShowScrollEffect = isHomePage ? isScrolled : false;
 
   // Handle active section based on scroll position
   useEffect(() => {
@@ -88,14 +85,18 @@ export function Navigation() {
   return (
     <motion.header
       initial={{ y: -100 }}
-      animate={{ y: isVisible ? 0 : -100 }}
-      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      animate={{ y: shouldShowHeader ? 0 : -100 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled
+        'fixed top-0 left-0 right-0 z-[1000] transition-all duration-300',
+        shouldShowScrollEffect
           ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl backdrop-saturate-150 shadow-lg border-b border-gray-200/50 dark:border-gray-700/50'
           : 'bg-transparent'
       )}
+      style={{
+        transform: shouldShowHeader ? 'translateY(0)' : 'translateY(-100%)',
+        transition: 'transform 0.3s ease-in-out'
+      }}
       role="banner"
     >
       <nav
@@ -126,17 +127,17 @@ export function Navigation() {
                   'relative px-4 py-2 rounded-lg font-medium transition-all duration-200',
                   'hover:text-primary-600 dark:hover:text-primary-400',
                   'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
-                  activeSection === item.id && !isProjectPage
+                  activeSection === item.id && isHomePage
                     ? 'text-primary-600 dark:text-primary-400'
                     : 'text-gray-700 dark:text-gray-300'
                 )}
-                aria-current={activeSection === item.id && !isProjectPage ? 'page' : undefined}
+                aria-current={activeSection === item.id && isHomePage ? 'page' : undefined}
               >
                 {item.label}
               </a>
 
               {/* Active indicator */}
-              {activeSection === item.id && !isProjectPage && (
+              {activeSection === item.id && isHomePage && (
                 <motion.div
                   layoutId="activeIndicator"
                   className="absolute inset-0 bg-primary-100 dark:bg-primary-900/30 rounded-lg -z-10"
@@ -266,11 +267,11 @@ export function Navigation() {
                     'block px-4 py-3 rounded-lg font-medium transition-all duration-200',
                     'hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20',
                     'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
-                    activeSection === item.id && !isProjectPage
+                    activeSection === item.id && isHomePage
                       ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20'
                       : 'text-gray-700 dark:text-gray-300'
                   )}
-                  aria-current={activeSection === item.id && !isProjectPage ? 'page' : undefined}
+                  aria-current={activeSection === item.id && isHomePage ? 'page' : undefined}
                 >
                   {item.label}
                 </a>
