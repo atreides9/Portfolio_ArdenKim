@@ -27,20 +27,14 @@ export function Navigation() {
   const { scrollY } = useScroll();
   const isProjectPage = pathname.startsWith('/projects/');
 
-  // Handle scroll state with direction detection
+  // Handle scroll state - always keep header visible
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const currentScrollY = latest;
 
-    // Scroll direction detection
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-      // Scrolling down - hide header
-      setIsVisible(false);
-    } else {
-      // Scrolling up - show header
-      setIsVisible(true);
-    }
+    // Always keep header visible
+    setIsVisible(true);
 
-    // Update scroll state
+    // Update scroll state for backdrop blur effect
     setIsScrolled(currentScrollY > 50);
     setLastScrollY(currentScrollY);
   });
