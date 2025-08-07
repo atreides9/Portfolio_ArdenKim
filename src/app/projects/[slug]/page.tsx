@@ -101,12 +101,12 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           transition={{ duration: prefersReducedMotion ? 0.2 : 0.8, delay: prefersReducedMotion ? 0 : 0.2 }}
           className="mb-16"
         >
-          {/* Vertical Long Web Version Image - Starbucks specific */}
+          {/* web Image - Starbucks specific */}
           {project.id === 'starbucks-redesign' && (
             <div className="relative mb-8">
               <div className="relative w-full">
                 <Image
-                  src="/images/projects/vertical long_web ver.png"
+                  src="/images/projects/web.png"
                   alt="Starbucks 앱 리디자인 - 모바일 세로형 화면"
                   width={1200}
                   height={2400}
