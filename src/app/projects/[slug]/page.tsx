@@ -106,7 +106,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
             <div className="relative mb-8">
               <div className="relative w-full">
                 <Image
-                  src="/images/projects/web.png"
+                  src="/images/projects/web2.png"
                   alt="Starbucks 앱 리디자인 - 모바일 세로형 화면"
                   width={1200}
                   height={2400}
