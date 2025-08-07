@@ -65,8 +65,8 @@ export function HeroSection() {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 className="inline-flex items-center rounded-full bg-primary-100 px-4 py-2 text-sm font-medium text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
               >
-                <span className="mr-2">🧪</span>
-                화학에서 디자인으로
+                <span className="mr-2">💡</span>
+                사용자 중심 프로덕트 디자이너
               </motion.div>
 
               {/* Main Title */}
@@ -82,9 +82,8 @@ export function HeroSection() {
                     Product Designer
                   </span>
                   <span className="block text-2xl font-medium text-gray-600 dark:text-gray-300 sm:text-3xl lg:text-4xl mt-2">
-                    화학 연구에서 배운 체계적 사고로
-                    복잡한 사용자 문제를 분자 단위로 분해하고
-                    새로운 결합을 통해 솔루션을 설계합니다
+                    사용자 리서치와 데이터 기반 의사결정으로
+                    비즈니스 임팩트를 만드는 디자이너입니다
                   </span>
                 </motion.h1>
               </div>
@@ -96,10 +95,9 @@ export function HeroSection() {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 max-w-2xl"
               >
-                나노소재화학에서 프로덕트 디자인으로. 과학적 사고와 창의적 문제해결이 만나는
-                지점에서
-                <strong className="text-gray-900 dark:text-white"> 사용자 경험을 설계</strong>
-                합니다.
+                화학 연구자에서 UX 디자이너로 전환한 독특한 배경으로, 
+                <strong className="text-gray-900 dark:text-white"> 가설-검증 방법론</strong>을 
+                디자인 프로세스에 적용하여 검증된 사용자 경험을 만듭니다.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -156,9 +154,9 @@ export function HeroSection() {
                 className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200 dark:border-gray-700"
               >
                 {[
-                  { value: '3+', label: '프로젝트' },
-                  { value: '95%', label: '사용자 만족도' },
-                  { value: '70%', label: '효율성 개선' },
+                  { value: '5+', label: '완성 프로젝트' },
+                  { value: '45%', label: '전환율 향상' },
+                  { value: '2.3x', label: '사용시간 증가' },
                 ].map((stat, index) => (
                   <div key={stat.label} className="text-center">
                     <motion.div

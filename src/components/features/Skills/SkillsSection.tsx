@@ -5,18 +5,24 @@ import { useRef } from 'react';
 import type { Skill } from '@/lib/types';
 
 const skillsData: Skill[] = [
-  // Design Tools
+  // Design Tools (최우선)
   {
     name: 'Figma',
     level: 95,
     category: 'design-tools',
-    description: '고급 컴포넌트 시스템 및 프로토타이핑',
+    description: '고급 컴포넌트 시스템, 프로토타이핑, Auto Layout',
+  },
+  {
+    name: 'Adobe XD',
+    level: 90,
+    category: 'design-tools',
+    description: '인터랙션 디자인, 프로토타이핑, 협업',
   },
   {
     name: 'Sketch',
     level: 85,
     category: 'design-tools',
-    description: '심볼 라이브러리 및 플러그인 활용',
+    description: '심볼 라이브러리, 플러그인 에코시스템',
   },
   {
     name: 'Adobe Creative Suite',
@@ -24,77 +30,109 @@ const skillsData: Skill[] = [
     category: 'design-tools',
     description: 'Photoshop, Illustrator, After Effects',
   },
-  { name: 'Principle', level: 75, category: 'design-tools', description: '인터랙션 프로토타이핑' },
-
-  // Development
   {
-    name: 'HTML/CSS',
-    level: 90,
-    category: 'development',
-    description: '반응형 웹 디자인 및 애니메이션',
-  },
-  {
-    name: 'JavaScript',
+    name: 'ProtoPie',
     level: 75,
-    category: 'development',
-    description: 'ES6+, DOM 조작, 이벤트 처리',
+    category: 'design-tools',
+    description: '고급 인터랙션 프로토타이핑',
   },
-  { name: 'React', level: 70, category: 'development', description: '컴포넌트 기반 UI 개발' },
-  { name: 'Next.js', level: 65, category: 'development', description: 'SSG, 성능 최적화' },
+  {
+    name: 'Framer',
+    level: 70,
+    category: 'design-tools',
+    description: '코드 기반 프로토타이핑',
+  },
 
-  // Research & Strategy
+  // Research & Strategy (두 번째 우선순위)
   {
     name: 'User Research',
     level: 90,
     category: 'research',
-    description: '인터뷰, 설문조사, 사용성 테스트',
+    description: '사용자 인터뷰, 관찰 조사, 에스노그래피',
+  },
+  {
+    name: 'Usability Testing',
+    level: 88,
+    category: 'research',
+    description: '테스크 기반 테스트, 휴리스틱 평가',
+  },
+  {
+    name: 'A/B Testing',
+    level: 80,
+    category: 'research',
+    description: '실험 설계, 통계적 분석, 인사이트 도출',
   },
   {
     name: 'Data Analysis',
     level: 85,
     category: 'research',
-    description: '사용자 행동 분석 및 인사이트 도출',
+    description: 'Google Analytics, Mixpanel, 사용자 행동 분석',
   },
-  { name: 'A/B Testing', level: 80, category: 'research', description: '실험 설계 및 통계적 검증' },
   {
     name: 'Information Architecture',
     level: 85,
     category: 'research',
-    description: '정보 구조 설계 및 카드 소팅',
+    description: '카드 소팅, 사이트맵, 사용자 플로우',
   },
 
-  // Collaboration
+  // Collaboration (세 번째 우선순위)
   {
-    name: 'Project Management',
-    level: 85,
+    name: 'Design System',
+    level: 88,
     category: 'collaboration',
-    description: 'Agile, Scrum 방법론 적용',
+    description: 'Atomic Design, 컴포넌트 라이브러리, 토큰화',
   },
   {
     name: 'Cross-functional Team',
     level: 95,
     category: 'collaboration',
-    description: '개발자, PM과의 협업 경험',
+    description: '개발자, PM, 마케팅 팀과의 협업',
   },
   {
-    name: 'Design System',
-    level: 88,
+    name: 'Agile & Scrum',
+    level: 85,
     category: 'collaboration',
-    description: '확장 가능한 디자인 시스템 구축',
+    description: 'Sprint Planning, Daily Standup, Retrospective',
   },
   {
     name: 'Stakeholder Communication',
     level: 90,
     category: 'collaboration',
-    description: '비즈니스 요구사항 분석 및 제안',
+    description: '디자인 의사결정 설득, 워크샵 진행',
+  },
+  {
+    name: 'Jira & Notion',
+    level: 80,
+    category: 'collaboration',
+    description: '프로젝트 관리, 문서화, 이슈 트래킹',
+  },
+
+  // Development (보조 스킬)
+  {
+    name: 'HTML/CSS',
+    level: 85,
+    category: 'development',
+    description: '시맨틱 마크업, 반응형 디자인',
+  },
+  {
+    name: 'JavaScript',
+    level: 70,
+    category: 'development',
+    description: '프로토타이핑, 디자인 검증',
+  },
+  {
+    name: 'React',
+    level: 65,
+    category: 'development',
+    description: '디자이너-개발자 협업 이해',
   },
 ];
 
 const skillCategories = [
   { id: 'design-tools', name: 'Design Tools', icon: '🎨', color: 'bg-blue-500' },
-  { id: 'development', name: 'Development', icon: '💻', color: 'bg-green-500' },
   { id: 'research', name: 'Research & Strategy', icon: '🔍', color: 'bg-purple-500' },
   { id: 'collaboration', name: 'Collaboration', icon: '🤝', color: 'bg-orange-500' },
+  { id: 'development', name: 'Development', icon: '💻', color: 'bg-green-500' },
 ];
 
 interface SkillBarProps {
@@ -175,8 +213,8 @@ export function SkillsSection() {
             Skills
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            사용자 중심의 디자인 사고와 기술적 구현 능력을 바탕으로
-            완성도 높은 솔루션을 제공합니다.
+            전문 디자인 도구부터 사용자 리서치까지, 
+            UX/UI 디자이너가 갖춰야 할 핵심 역량들입니다.
           </p>
         </motion.div>
 
@@ -229,10 +267,10 @@ export function SkillsSection() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
             {[
-              { value: '4+', label: '연구 분야 경험', desc: '나노소재화학 전문성' },
-              { value: '15+', label: '디자인 도구', desc: '전문가 수준 활용' },
-              { value: '3+', label: '프로젝트 완료', desc: '실제 임팩트 창출' },
-              { value: '100%', label: '팀워크', desc: '협업 중심 사고' },
+              { value: '6+', label: '디자인 도구', desc: 'Figma부터 ProtoPie까지' },
+              { value: '5+', label: '리서치 방법', desc: '정량/정성 조사 경험' },
+              { value: '90%', label: '팀 협업 점수', desc: '크로스펑셔널 팀 경험' },
+              { value: '3+', label: '완료 프로젝트', desc: 'End-to-end 디자인' },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}

@@ -66,13 +66,135 @@ export function AboutSection() {
             About
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            과학에서 디자인으로의 여정. 서로 다른 분야의 만남이 만들어낸 독특한 관점과 문제 해결
-            방식을 소개합니다.
+            과학자에서 디자이너로 전환한 독특한 여정과 3가지 핵심 강점, 
+            그리고 사용자 중심 디자인 철학을 소개합니다.
           </p>
+        </motion.div>
+
+        {/* 3가지 핵심 강점 */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20"
+        >
+          <div className="text-center mb-12">
+            <h3 className="heading-3 text-gray-900 dark:text-white mb-4">
+              디자이너로서의 3가지 핵심 강점
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              과학적 배경에서 나온 체계적 사고와 사용자 중심의 문제 해결 능력
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: '🔬',
+                title: '가설-검증 방법론',
+                description: '화학 연구에서 익힌 가설 설정과 검증 과정을 디자인에 적용합니다. 사용자의 행동과 니즈를 가설로 설정하고, 프로토타입과 테스트를 통해 검증하는 체계적 접근법을 사용합니다.',
+                keyPoints: ['사용자 가설 수립', '프로토타입 검증', 'A/B 테스트 설계']
+              },
+              {
+                icon: '🎯',
+                title: '문제 분해 & 구조화',
+                description: '복잡한 분자 구조를 분석하듯 사용자 문제를 체계적으로 분해합니다. 근본 원인을 찾아내고 우선순위를 정해 단계별로 해결하는 접근 방식으로 명확한 솔루션을 도출합니다.',
+                keyPoints: ['근본원인 분석', '문제 우선순위화', '단계별 솔루션']
+              },
+              {
+                icon: '📊',
+                title: '데이터 기반 의사결정',
+                description: '정량적 데이터와 정성적 인사이트를 균형있게 활용합니다. 사용자 리서치 데이터를 객관적으로 분석하고, 비즈니스 임팩트를 측정 가능한 지표로 제시하여 설득력 있는 디자인 결정을 내립니다.',
+                keyPoints: ['정량/정성 분석', '지표 기반 검증', '임팩트 측정']
+              }
+            ].map((strength, index) => (
+              <motion.div
+                key={strength.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ delay: index * 0.2, duration: 0.8 }}
+                className="group"
+              >
+                <div className="card p-6 h-full border-l-4 border-primary-500 hover:border-primary-600 transition-colors">
+                  <div className="text-4xl mb-4">{strength.icon}</div>
+                  <h4 className="heading-4 text-gray-900 dark:text-white mb-4">
+                    {strength.title}
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    {strength.description}
+                  </p>
+                  <div className="space-y-2">
+                    {strength.keyPoints.map((point) => (
+                      <div key={point} className="flex items-center text-sm text-primary-600 dark:text-primary-400">
+                        <span className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2 flex-shrink-0"></span>
+                        {point}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* 디자인 철학 */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20"
+        >
+          <div className="text-center mb-12">
+            <h3 className="heading-3 text-gray-900 dark:text-white mb-4">
+              디자인 철학
+            </h3>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="card p-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20"
+              >
+                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                  🔍 사용자 중심 사고
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  모든 디자인 결정은 사용자의 실제 니즈와 행동에서 시작됩니다. 
+                  가정이 아닌 리서치와 데이터를 바탕으로 사용자의 진짜 문제를 발견하고 해결합니다.
+                </p>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="card p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20"
+              >
+                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                  ⚡ 임팩트 중심 디자인
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  아름다운 디자인보다 비즈니스와 사용자에게 실질적 가치를 주는 디자인을 추구합니다. 
+                  측정 가능한 목표를 설정하고 지속적으로 개선해나갑니다.
+                </p>
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Story Timeline */}
         <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h3 className="heading-3 text-gray-900 dark:text-white mb-4">
+              나의 여정
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              과학에서 디자인으로의 전환 과정
+            </p>
+          </div>
+
           <div className="relative">
             {/* Timeline Line */}
             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-purple-500 to-green-500 md:left-1/2 md:-translate-x-0.5" />
@@ -165,9 +287,9 @@ export function AboutSection() {
         >
           <div className="max-w-4xl mx-auto card p-8 bg-gradient-to-br from-primary-50 to-purple-50 dark:from-primary-900/20 dark:to-purple-900/20">
             <blockquote className="text-xl font-medium text-gray-900 dark:text-white leading-relaxed">
-              "과학의 정확성과 디자인의 창의성이 만나는 지점에서,
+              "사용자의 진짜 문제를 과학적으로 분석하고,
               <br className="hidden sm:block" />
-              사용자의 진짜 문제를 해결하는 솔루션을 만들어갑니다."
+              데이터에 기반한 창의적 솔루션으로 비즈니스 임팩트를 만들어냅니다."
             </blockquote>
             <cite className="block mt-4 text-primary-600 dark:text-primary-400 font-medium">
               - 김나겸, Product Designer
