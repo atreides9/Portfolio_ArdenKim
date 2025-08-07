@@ -319,7 +319,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           >
             <div className="relative">
               <Image
-                src="/images/projects/web2.png"
+                src="/images/projects/web3.png"
                 alt="Starbucks 앱 리디자인 - 모바일 세로형 화면"
                 width={1200}
                 height={2400}
