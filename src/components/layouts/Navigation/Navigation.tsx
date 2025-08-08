@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import type { NavItem } from '@/lib/types';
@@ -17,27 +16,25 @@ const navItems: NavItem[] = [
 ];
 
 export function Navigation() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [activeSection, setActiveSection] = useState('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   
-  const isProjectPage = pathname.startsWith('/projects/');
   const isHomePage = pathname === '/';
+  const isProjectPage = pathname.startsWith('/projects/');
   
-  // Use smart header only on homepage, always visible on other pages
-  const { isVisible, isScrolled } = useSmartHeader({
-    hideDelay: 3000,
-    topZone: 100,
-    scrollThreshold: 50
-  });
+  // 홈페이지에서만 스마트 헤더 적용
+  const smartHeader = useSmartHeader();
   
-  // For non-homepage, always show header
-  const shouldShowHeader = !isHomePage || isVisible;
-  const shouldShowScrollEffect = isHomePage ? isScrolled : false;
+  // 홈페이지가 아니면 항상 표시, 홈페이지면 스마트 헤더 로직 사용
+  const isVisible = isHomePage ? smartHeader.isVisible : true;
+  const isScrolled = isHomePage ? smartHeader.isScrolled : false;
 
   // Handle active section based on scroll position
   useEffect(() => {
+    if (!isHomePage) return;
+    
     const handleScroll = () => {
       const sections = navItems.map((item) => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 100;
@@ -54,7 +51,7 @@ export function Navigation() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHomePage]);
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
@@ -83,18 +80,15 @@ export function Navigation() {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: shouldShowHeader ? 0 : -100 }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
+    <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-[1000] transition-all duration-300',
-        shouldShowScrollEffect
+        'fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ease-in-out',
+        isScrolled
           ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl backdrop-saturate-150 shadow-lg border-b border-gray-200/50 dark:border-gray-700/50'
           : 'bg-transparent'
       )}
       style={{
-        transform: shouldShowHeader ? 'translateY(0)' : 'translateY(-100%)',
+        transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.3s ease-in-out'
       }}
       role="banner"
@@ -105,7 +99,7 @@ export function Navigation() {
         aria-label="메인 네비게이션"
       >
         {/* Logo */}
-        <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
+        <div className="flex-shrink-0">
           <a
             href={isProjectPage ? '/' : '#hero'}
             onClick={(e) => handleSmoothScroll(e, 'hero')}
@@ -114,12 +108,12 @@ export function Navigation() {
           >
             김나겸
           </a>
-        </motion.div>
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-1">
           {navItems.map((item) => (
-            <motion.div key={item.id} className="relative">
+            <div key={item.id} className="relative">
               <a
                 href={isProjectPage ? (item.id === 'hero' ? '/' : `/#${item.id}`) : item.href}
                 onClick={(e) => handleSmoothScroll(e, item.id)}
@@ -138,13 +132,9 @@ export function Navigation() {
 
               {/* Active indicator */}
               {activeSection === item.id && isHomePage && (
-                <motion.div
-                  layoutId="activeIndicator"
-                  className="absolute inset-0 bg-primary-100 dark:bg-primary-900/30 rounded-lg -z-10"
-                  transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                />
+                <div className="absolute inset-0 bg-primary-100 dark:bg-primary-900/30 rounded-lg -z-10" />
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -186,100 +176,59 @@ export function Navigation() {
           aria-label="메뉴 열기/닫기"
           aria-expanded={isMobileMenuOpen}
         >
-          <motion.div animate={isMobileMenuOpen ? 'open' : 'closed'} className="w-6 h-6 relative">
-            <motion.span
-              variants={{
-                closed: { rotate: 0, y: 0 },
-                open: { rotate: 45, y: 8 },
-              }}
-              className="absolute top-1 left-0 w-6 h-0.5 bg-current transform origin-center transition-all duration-200"
+          <div className="w-6 h-6 relative">
+            <span
+              className={cn(
+                "absolute top-1 left-0 w-6 h-0.5 bg-current transform origin-center transition-all duration-200",
+                isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+              )}
             />
-            <motion.span
-              variants={{
-                closed: { opacity: 1 },
-                open: { opacity: 0 },
-              }}
-              className="absolute top-3 left-0 w-6 h-0.5 bg-current transition-all duration-200"
+            <span
+              className={cn(
+                "absolute top-3 left-0 w-6 h-0.5 bg-current transition-all duration-200",
+                isMobileMenuOpen ? "opacity-0" : ""
+              )}
             />
-            <motion.span
-              variants={{
-                closed: { rotate: 0, y: 0 },
-                open: { rotate: -45, y: -8 },
-              }}
-              className="absolute top-5 left-0 w-6 h-0.5 bg-current transform origin-center transition-all duration-200"
+            <span
+              className={cn(
+                "absolute top-5 left-0 w-6 h-0.5 bg-current transform origin-center transition-all duration-200",
+                isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+              )}
             />
-          </motion.div>
+          </div>
         </button>
       </nav>
 
       {/* Mobile Menu */}
-      <motion.div
-        initial={false}
-        animate={isMobileMenuOpen ? 'open' : 'closed'}
-        variants={{
-          open: {
-            height: 'auto',
-            opacity: 1,
-            transition: {
-              height: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
-              opacity: { duration: 0.2, delay: 0.1 },
-            },
-          },
-          closed: {
-            height: 0,
-            opacity: 0,
-            transition: {
-              height: { duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0.1 },
-              opacity: { duration: 0.2 },
-            },
-          },
-        }}
-        className="md:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50"
+      <div
+        className={cn(
+          "md:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 transition-all duration-300",
+          isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        )}
       >
         <div className="container py-4">
           <div className="flex flex-col space-y-2">
-            {navItems.map((item, index) => (
-              <motion.div
+            {navItems.map((item) => (
+              <a
                 key={item.id}
-                initial={false}
-                animate={isMobileMenuOpen ? 'open' : 'closed'}
-                variants={{
-                  open: {
-                    y: 0,
-                    opacity: 1,
-                    transition: {
-                      delay: index * 0.1 + 0.2,
-                      duration: 0.3,
-                      ease: [0.16, 1, 0.3, 1],
-                    },
-                  },
-                  closed: {
-                    y: -10,
-                    opacity: 0,
-                    transition: { duration: 0.2 },
-                  },
-                }}
+                href={isProjectPage ? (item.id === 'hero' ? '/' : `/#${item.id}`) : item.href}
+                onClick={(e) => handleSmoothScroll(e, item.id)}
+                className={cn(
+                  'block px-4 py-3 rounded-lg font-medium transition-all duration-200',
+                  'hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20',
+                  'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
+                  activeSection === item.id && isHomePage
+                    ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20'
+                    : 'text-gray-700 dark:text-gray-300'
+                )}
+                aria-current={activeSection === item.id && isHomePage ? 'page' : undefined}
               >
-                <a
-                  href={isProjectPage ? (item.id === 'hero' ? '/' : `/#${item.id}`) : item.href}
-                  onClick={(e) => handleSmoothScroll(e, item.id)}
-                  className={cn(
-                    'block px-4 py-3 rounded-lg font-medium transition-all duration-200',
-                    'hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20',
-                    'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
-                    activeSection === item.id && isHomePage
-                      ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20'
-                      : 'text-gray-700 dark:text-gray-300'
-                  )}
-                  aria-current={activeSection === item.id && isHomePage ? 'page' : undefined}
-                >
-                  {item.label}
-                </a>
-              </motion.div>
+                {item.label}
+              </a>
             ))}
           </div>
         </div>
-      </motion.div>
-    </motion.header>
+      </div>
+    </header>
   );
 }

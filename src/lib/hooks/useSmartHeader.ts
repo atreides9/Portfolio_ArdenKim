@@ -1,98 +1,66 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-interface UseSmartHeaderOptions {
-  hideDelay?: number;
-  topZone?: number;
-  scrollThreshold?: number;
-}
-
-export function useSmartHeader(options: UseSmartHeaderOptions = {}) {
-  const {
-    hideDelay = 3000,
-    topZone = 100,
-    scrollThreshold = 50
-  } = options;
-
+export function useSmartHeader() {
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [hideTimer, setHideTimer] = useState<NodeJS.Timeout | null>(null);
+  const lastScrollY = useRef(0);
+  const hideTimer = useRef<NodeJS.Timeout | null>(null);
+  const ticking = useRef(false);
 
-  // Throttle function for performance
-  const throttle = useCallback((func: Function, delay: number) => {
-    let timeoutId: NodeJS.Timeout;
-    let lastExecTime = 0;
-    
-    return (...args: any[]) => {
-      const currentTime = Date.now();
-      
-      if (currentTime - lastExecTime > delay) {
-        func(...args);
-        lastExecTime = currentTime;
-      } else {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => func(...args), delay);
-      }
-    };
-  }, []);
-
-  // Clear hide timer
-  const clearHideTimer = useCallback(() => {
-    if (hideTimer) {
-      clearTimeout(hideTimer);
-      setHideTimer(null);
+  const clearTimer = () => {
+    if (hideTimer.current) {
+      clearTimeout(hideTimer.current);
+      hideTimer.current = null;
     }
-  }, [hideTimer]);
+  };
 
-  // Show header immediately
-  const showHeader = useCallback(() => {
+  const showHeader = () => {
     setIsVisible(true);
-    clearHideTimer();
-  }, [clearHideTimer]);
+    clearTimer();
+  };
 
-  // Hide header with delay
-  const hideHeaderWithDelay = useCallback(() => {
-    clearHideTimer();
-    const timer = setTimeout(() => {
+  const hideHeaderDelayed = () => {
+    clearTimer();
+    hideTimer.current = setTimeout(() => {
       setIsVisible(false);
-    }, hideDelay);
-    setHideTimer(timer);
-  }, [hideDelay, clearHideTimer]);
+    }, 3000);
+  };
 
-  // Handle scroll events
-  const handleScroll = useCallback(throttle(() => {
-    const currentScrollY = window.scrollY;
-    setIsScrolled(currentScrollY > scrollThreshold);
+  const handleScroll = () => {
+    if (!ticking.current) {
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        setIsScrolled(currentScrollY > 50);
 
-    // At top of page - always show
-    if (currentScrollY <= scrollThreshold) {
-      showHeader();
-      setLastScrollY(currentScrollY);
-      return;
+        // 페이지 최상단에서는 항상 표시
+        if (currentScrollY <= 50) {
+          showHeader();
+        } 
+        // 스크롤 업 시 즉시 표시
+        else if (currentScrollY < lastScrollY.current) {
+          showHeader();
+        }
+        // 스크롤 다운 시 3초 후 숨김
+        else if (currentScrollY > lastScrollY.current) {
+          hideHeaderDelayed();
+        }
+
+        lastScrollY.current = currentScrollY;
+        ticking.current = false;
+      });
+      ticking.current = true;
     }
+  };
 
-    // Scrolling up - show immediately
-    if (currentScrollY < lastScrollY) {
-      showHeader();
-    } 
-    // Scrolling down - hide with delay
-    else if (currentScrollY > lastScrollY) {
-      hideHeaderWithDelay();
-    }
-
-    setLastScrollY(currentScrollY);
-  }, 16), [lastScrollY, scrollThreshold, showHeader, hideHeaderWithDelay, throttle]);
-
-  // Handle mouse move events
-  const handleMouseMove = useCallback(throttle((e: MouseEvent) => {
-    if (e.clientY <= topZone) {
+  const handleMouseMove = (e: MouseEvent) => {
+    // 마우스를 상단 100px 영역에 호버 시 헤더 표시
+    if (e.clientY <= 100) {
       showHeader();
     }
-  }, 100), [topZone, showHeader, throttle]);
+  };
 
-  // Setup event listeners
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
@@ -100,14 +68,9 @@ export function useSmartHeader(options: UseSmartHeaderOptions = {}) {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
-      clearHideTimer();
+      clearTimer();
     };
-  }, [handleScroll, handleMouseMove, clearHideTimer]);
+  }, []);
 
-  return {
-    isVisible,
-    isScrolled,
-    showHeader,
-    hideHeader: () => setIsVisible(false)
-  };
+  return { isVisible, isScrolled };
 }
