@@ -15,6 +15,16 @@ export function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
 
+  const handleScrollToAiLab = () => {
+    const aiLabSection = document.getElementById('ai-lab');
+    if (aiLabSection) {
+      aiLabSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   const handleScrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
     if (projectsSection) {
@@ -63,10 +73,10 @@ export function HeroSection() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="inline-flex items-center rounded-full bg-primary-100 px-4 py-2 text-sm font-medium text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 text-sm font-medium text-blue-700 dark:from-blue-900/30 dark:to-purple-900/30 dark:text-blue-300"
               >
-                <span className="mr-2">💡</span>
-                사용자 중심 프로덕트 디자이너
+                <span className="mr-2">🤖</span>
+                AI-Augmented Product Designer & Builder
               </motion.div>
 
               {/* Main Title */}
@@ -78,12 +88,12 @@ export function HeroSection() {
                   transition={{ delay: 0.3, duration: 0.8 }}
                   className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl lg:text-6xl"
                 >
-                  <span className="block text-primary-600 dark:text-primary-400">
-                    Product Designer
+                  <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+                    AI × Design × Build
                   </span>
                   <span className="block text-2xl font-medium text-gray-600 dark:text-gray-300 sm:text-3xl lg:text-4xl mt-2">
-                    사용자 리서치와 데이터 기반 의사결정으로
-                    비즈니스 임팩트를 만드는 디자이너입니다
+                    디자인하고, AI로 구현하고, 실제로 작동하는 
+                    <strong className="text-gray-900 dark:text-white"> 도구를 만드는 빌더</strong>입니다
                   </span>
                 </motion.h1>
               </div>
@@ -95,9 +105,10 @@ export function HeroSection() {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 max-w-2xl"
               >
-                화학 연구자에서 UX 디자이너로 전환한 독특한 배경으로, 
-                <strong className="text-gray-900 dark:text-white"> 가설-검증 방법론</strong>을 
-                디자인 프로세스에 적용하여 검증된 사용자 경험을 만듭니다.
+                화학자에서 디자이너, 그리고 AI 빌더로. 
+                <strong className="text-gray-900 dark:text-white"> Claude, GPT-4와 함께</strong> 
+                단순히 디자인만 하는 것이 아니라 실제로 사람들이 사용하는 
+                <strong className="text-blue-600 dark:text-blue-400"> AI 도구를 직접 만들고 운영</strong>합니다.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -108,17 +119,17 @@ export function HeroSection() {
                 className="flex flex-col gap-4 sm:flex-row"
               >
                 <button
-                  onClick={handleScrollToProjects}
+                  onClick={handleScrollToAiLab}
                   className={cn(
-                    'group relative overflow-hidden rounded-lg bg-primary-600 px-8 py-4 text-white',
-                    'hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
+                    'group relative overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-white',
+                    'hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
                     'transform transition-all duration-200 hover:-translate-y-1 hover:shadow-lg',
                     'font-medium'
                   )}
-                  aria-label="프로젝트 섹션으로 이동"
+                  aria-label="AI Lab 섹션으로 이동"
                 >
                   <span className="relative z-10 flex items-center">
-                    프로젝트 보기
+                    🧪 AI Lab 체험하기
                     <motion.span
                       className="ml-2"
                       animate={{ x: [0, 4, 0] }}
@@ -127,26 +138,25 @@ export function HeroSection() {
                       →
                     </motion.span>
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 </button>
 
                 <button
-                  onClick={handleScrollToContact}
+                  onClick={handleScrollToProjects}
                   className={cn(
                     'rounded-lg border-2 border-gray-300 px-8 py-4 text-gray-700 dark:border-gray-600 dark:text-gray-300',
-                    'hover:border-primary-300 hover:bg-primary-50 hover:text-primary-700',
-                    'dark:hover:border-primary-600 dark:hover:bg-primary-900/20 dark:hover:text-primary-300',
-                    'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
+                    'hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700',
+                    'dark:hover:border-blue-600 dark:hover:bg-blue-900/20 dark:hover:text-blue-300',
+                    'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
                     'transform transition-all duration-200 hover:-translate-y-1 hover:shadow-md',
                     'font-medium'
                   )}
-                  aria-label="연락처 섹션으로 이동"
+                  aria-label="프로젝트 섹션으로 이동"
                 >
-                  연락하기
+                  포트폴리오 보기
                 </button>
               </motion.div>
 
-              {/* Stats */}
+              {/* AI Stats */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -154,20 +164,21 @@ export function HeroSection() {
                 className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200 dark:border-gray-700"
               >
                 {[
-                  { value: '5+', label: '완성 프로젝트' },
-                  { value: '45%', label: '전환율 향상' },
-                  { value: '2.3x', label: '사용시간 증가' },
+                  { value: '3', label: 'Live AI 도구', icon: '🚀' },
+                  { value: '2,100+', label: '실사용자', icon: '👥' },
+                  { value: '95%', label: 'AI 정확도', icon: '🎯' },
                 ].map((stat, index) => (
                   <div key={stat.label} className="text-center">
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: 1.1 + index * 0.1, duration: 0.6 }}
-                      className="text-2xl font-bold text-primary-600 dark:text-primary-400"
+                      className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
                     >
                       {stat.value}
                     </motion.div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1 flex items-center justify-center gap-1">
+                      <span>{stat.icon}</span>
                       {stat.label}
                     </div>
                   </div>

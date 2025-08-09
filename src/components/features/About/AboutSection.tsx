@@ -6,48 +6,48 @@ import { SkillMolecule } from './SkillMolecule';
 const storyItems = [
   {
     icon: '🧪',
-    title: '나노소재화학 연구',
+    title: '화학자: 분자부터 시작',
     description:
-      '분자 단위의 정밀한 분석과 체계적인 실험 설계를 통해 과학적 사고력을 기반으로 한 문제 해결 역량을 키웠습니다.',
-    skills: ['분석적 사고', '가설 수립', '실험 설계', '데이터 해석'],
-  },
-  {
-    icon: '🔄',
-    title: '전환점: 기술과 사람의 접점',
-    description:
-      '연구 과정에서 사용자 중심의 인터페이스 설계에 관심을 갖게 되었고, 기술과 사람을 연결하는 디자인의 힘을 발견했습니다.',
-    skills: ['사용자 리서치', '문제 정의', '아이디어 발굴', '프로토타이핑'],
+      '나노소재 연구에서 분자 단위의 정밀한 분석과 가설-검증 방법론을 익혔습니다. 복잡한 화학 구조를 이해하는 체계적 사고가 지금의 AI 시스템 설계 능력의 기초가 되었습니다.',
+    skills: ['과학적 방법론', '체계적 분석', '가설-검증', '데이터 해석'],
   },
   {
     icon: '🎨',
-    title: '프로덕트 디자인으로의 도약',
+    title: '디자이너: 사용자 중심으로',
     description:
-      '과학적 분석력과 창의적 사고를 결합하여 사용자의 문제를 근본적으로 해결하는 디자인 솔루션을 만들어갑니다.',
-    skills: ['사용자 경험 설계', '인터랙션 디자인', '비즈니스 임팩트', '팀 협업'],
+      '기술과 사람의 접점에서 UX 디자인의 힘을 발견했습니다. 화학 연구의 정밀함을 사용자 리서치에 적용하며, 데이터 기반 디자인 솔루션을 만드는 방법을 익혔습니다.',
+    skills: ['사용자 리서치', 'UX 디자인', '프로토타이핑', '데이터 분석'],
+  },
+  {
+    icon: '🤖',
+    title: 'AI 빌더: 실제 도구 제작',
+    description:
+      '2024년, ChatGPT와 Claude의 등장으로 새로운 가능성을 발견했습니다. 디자인만 하는 것이 아니라 AI API를 활용해 실제로 사람들이 사용하는 도구를 직접 만들고 운영하기 시작했습니다.',
+    skills: ['AI API 활용', 'Prompt Engineering', 'Full-Stack 개발', 'Live 서비스 운영'],
   },
 ];
 
-// Skill molecule configuration
+// AI-focused skill molecule configuration
 const skillsData = [
-  { name: '분석적 사고', level: 95, category: 'core' as const },
-  { name: 'UX 리서치', level: 88, category: 'design' as const },
-  { name: '프로토타이핑', level: 82, category: 'design' as const },
-  { name: '시스템 사고', level: 90, category: 'core' as const },
-  { name: '인터랙션 디자인', level: 85, category: 'design' as const },
-  { name: '문제 해결', level: 92, category: 'soft' as const },
-  { name: '데이터 해석', level: 87, category: 'tech' as const },
-  { name: '팀 협업', level: 89, category: 'soft' as const },
+  { name: 'AI Integration', level: 95, category: 'tech' as const },
+  { name: '시스템 사고', level: 95, category: 'core' as const },
+  { name: 'Prompt Engineering', level: 92, category: 'tech' as const },
+  { name: '풀스택 개발', level: 88, category: 'tech' as const },
+  { name: 'UX 디자인', level: 90, category: 'design' as const },
+  { name: '문제 해결', level: 94, category: 'core' as const },
+  { name: '데이터 분석', level: 87, category: 'tech' as const },
+  { name: 'API 설계', level: 85, category: 'tech' as const },
 ];
 
 const skillConnections = [
-  { from: 0, to: 3, strength: 0.9 }, // 분석적 사고 ↔ 시스템 사고
-  { from: 0, to: 6, strength: 0.8 }, // 분석적 사고 ↔ 데이터 해석
-  { from: 1, to: 2, strength: 0.7 }, // UX 리서치 ↔ 프로토타이핑
-  { from: 1, to: 4, strength: 0.8 }, // UX 리서치 ↔ 인터랙션 디자인
-  { from: 2, to: 4, strength: 0.9 }, // 프로토타이핑 ↔ 인터랙션 디자인
-  { from: 3, to: 5, strength: 0.8 }, // 시스템 사고 ↔ 문제 해결
-  { from: 5, to: 7, strength: 0.7 }, // 문제 해결 ↔ 팀 협업
-  { from: 6, to: 0, strength: 0.6 }, // 데이터 해석 ↔ 분석적 사고
+  { from: 0, to: 2, strength: 0.95 }, // AI Integration ↔ Prompt Engineering
+  { from: 0, to: 3, strength: 0.8 },  // AI Integration ↔ 풀스택 개발
+  { from: 1, to: 5, strength: 0.9 },  // 시스템 사고 ↔ 문제 해결
+  { from: 2, to: 7, strength: 0.8 },  // Prompt Engineering ↔ API 설계
+  { from: 3, to: 7, strength: 0.9 },  // 풀스택 개발 ↔ API 설계
+  { from: 4, to: 5, strength: 0.85 }, // UX 디자인 ↔ 문제 해결
+  { from: 1, to: 6, strength: 0.8 },  // 시스템 사고 ↔ 데이터 분석
+  { from: 6, to: 0, strength: 0.7 },  // 데이터 분석 ↔ AI Integration
 ];
 
 export function AboutSection() {
@@ -63,11 +63,11 @@ export function AboutSection() {
           className="text-center mb-16"
         >
           <h2 id="about-title" className="heading-2 text-gray-900 dark:text-white mb-4">
-            About
+            화학자 → 디자이너 → AI 빌더
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            과학자에서 디자이너로 전환한 독특한 여정과 3가지 핵심 강점, 
-            그리고 사용자 중심 디자인 철학을 소개합니다.
+            🧪 분자부터 시작해 🎨 사용자 경험을 거쳐 🤖 AI로 실제 도구를 만드는 
+            <strong className="text-blue-600 dark:text-blue-400"> 독특한 여정과 3가지 핵심 역량</strong>을 소개합니다.
           </p>
         </motion.div>
 
@@ -81,32 +81,32 @@ export function AboutSection() {
         >
           <div className="text-center mb-12">
             <h3 className="heading-3 text-gray-900 dark:text-white mb-4">
-              디자이너로서의 3가지 핵심 강점
+              AI 빌더로서의 3가지 핵심 역량
             </h3>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              과학적 배경에서 나온 체계적 사고와 사용자 중심의 문제 해결 능력
+              과학자의 체계적 사고 × 디자이너의 사용자 관점 × 개발자의 구현 능력
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
+                icon: '🤖',
+                title: 'AI 시스템 설계 & 운영',
+                description: 'Claude 3.5 Sonnet, GPT-4 등 최신 LLM API를 활용해 실제 문제를 해결하는 AI 도구를 설계하고 운영합니다. 단순 활용이 아닌 프롬프트 최적화와 워크플로우 설계로 95% 정확도를 달성합니다.',
+                keyPoints: ['LLM API 활용', '프롬프트 엔지니어링', 'AI 워크플로우 설계']
+              },
+              {
+                icon: '⚡',
+                title: '풀스택 개발 & 실현',
+                description: '디자인에서 끝나지 않고 Next.js, TypeScript로 직접 구현합니다. 사용자가 실제로 사용할 수 있는 완성된 제품을 만들어 2,100+명이 사용하는 라이브 서비스를 운영하고 있습니다.',
+                keyPoints: ['Next.js 14 구현', 'TypeScript 활용', 'Live 서비스 운영']
+              },
+              {
                 icon: '🔬',
-                title: '가설-검증 방법론',
-                description: '화학 연구에서 익힌 가설 설정과 검증 과정을 디자인에 적용합니다. 사용자의 행동과 니즈를 가설로 설정하고, 프로토타입과 테스트를 통해 검증하는 체계적 접근법을 사용합니다.',
-                keyPoints: ['사용자 가설 수립', '프로토타입 검증', 'A/B 테스트 설계']
-              },
-              {
-                icon: '🎯',
-                title: '문제 분해 & 구조화',
-                description: '복잡한 분자 구조를 분석하듯 사용자 문제를 체계적으로 분해합니다. 근본 원인을 찾아내고 우선순위를 정해 단계별로 해결하는 접근 방식으로 명확한 솔루션을 도출합니다.',
-                keyPoints: ['근본원인 분석', '문제 우선순위화', '단계별 솔루션']
-              },
-              {
-                icon: '📊',
-                title: '데이터 기반 의사결정',
-                description: '정량적 데이터와 정성적 인사이트를 균형있게 활용합니다. 사용자 리서치 데이터를 객관적으로 분석하고, 비즈니스 임팩트를 측정 가능한 지표로 제시하여 설득력 있는 디자인 결정을 내립니다.',
-                keyPoints: ['정량/정성 분석', '지표 기반 검증', '임팩트 측정']
+                title: '과학적 검증 & 개선',
+                description: '화학 연구의 가설-검증 방법론을 AI 도구 개발에 적용합니다. 사용자 피드백과 사용 데이터를 분석해 지속적으로 개선하며, A/B 테스트로 기능의 효과를 객관적으로 검증합니다.',
+                keyPoints: ['사용자 데이터 분석', 'A/B 테스트 설계', '지속적 개선']
               }
             ].map((strength, index) => (
               <motion.div
@@ -149,7 +149,7 @@ export function AboutSection() {
         >
           <div className="text-center mb-12">
             <h3 className="heading-3 text-gray-900 dark:text-white mb-4">
-              디자인 철학
+              AI 빌더 철학
             </h3>
           </div>
 
@@ -157,27 +157,27 @@ export function AboutSection() {
             <div className="grid md:grid-cols-2 gap-8">
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="card p-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20"
+                className="card p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20"
               >
                 <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                  🔍 사용자 중심 사고
+                  🚀 실제로 작동하는 도구
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  모든 디자인 결정은 사용자의 실제 니즈와 행동에서 시작됩니다. 
-                  가정이 아닌 리서치와 데이터를 바탕으로 사용자의 진짜 문제를 발견하고 해결합니다.
+                  컨셉이나 프로토타입에서 끝나지 않습니다. 실제 사용자가 매일 사용하는 
+                  라이브 AI 도구를 만들고 운영하며, 진짜 문제를 해결하는 것에 집중합니다.
                 </p>
               </motion.div>
 
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="card p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20"
+                className="card p-6 bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20"
               >
                 <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                  ⚡ 임팩트 중심 디자인
+                  🔬 데이터 기반 AI 최적화
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  아름다운 디자인보다 비즈니스와 사용자에게 실질적 가치를 주는 디자인을 추구합니다. 
-                  측정 가능한 목표를 설정하고 지속적으로 개선해나갑니다.
+                  AI의 응답 품질을 지속적으로 개선합니다. 사용자 피드백과 성능 데이터를 분석해 
+                  프롬프트를 최적화하고, A/B 테스트로 기능의 효과를 검증합니다.
                 </p>
               </motion.div>
             </div>
@@ -188,16 +188,16 @@ export function AboutSection() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h3 className="heading-3 text-gray-900 dark:text-white mb-4">
-              나의 여정
+              나의 여정: 화학자 → 디자이너 → AI 빌더
             </h3>
             <p className="text-gray-600 dark:text-gray-300">
-              과학에서 디자인으로의 전환 과정
+              분자 구조부터 사용자 경험을 거쳐 AI 시스템까지
             </p>
           </div>
 
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-purple-500 to-green-500 md:left-1/2 md:-translate-x-0.5" />
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-green-500 md:left-1/2 md:-translate-x-0.5" />
 
             {/* Story Items */}
             {storyItems.map((item, index) => (
@@ -263,10 +263,10 @@ export function AboutSection() {
         >
           <div className="text-center mb-12">
             <h3 className="heading-3 text-gray-900 dark:text-white mb-4">
-              스킬 시너지
+              AI × Design × Code 시너지
             </h3>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              각 스킬은 독립적이지 않습니다. 서로 연결되고 상호작용하며 더 큰 가치를 만들어냅니다.
+              AI, 디자인, 개발 스킬들이 서로 연결되어 실제 작동하는 도구를 만드는 힘이 됩니다.
             </p>
           </div>
           
@@ -285,14 +285,14 @@ export function AboutSection() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="mt-20 text-center"
         >
-          <div className="max-w-4xl mx-auto card p-8 bg-gradient-to-br from-primary-50 to-purple-50 dark:from-primary-900/20 dark:to-purple-900/20">
+          <div className="max-w-4xl mx-auto card p-8 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
             <blockquote className="text-xl font-medium text-gray-900 dark:text-white leading-relaxed">
-              "사용자의 진짜 문제를 과학적으로 분석하고,
+              "디자인만 하지 않습니다. AI를 활용해 실제로 사람들이 사용하는 도구를 만들고,
               <br className="hidden sm:block" />
-              데이터에 기반한 창의적 솔루션으로 비즈니스 임팩트를 만들어냅니다."
+              2,100+명의 사용자와 함께 더 나은 솔루션을 만들어갑니다."
             </blockquote>
-            <cite className="block mt-4 text-primary-600 dark:text-primary-400 font-medium">
-              - 김나겸, Product Designer
+            <cite className="block mt-4 text-blue-600 dark:text-blue-400 font-medium">
+              - 김나겸, AI-Augmented Designer & Builder
             </cite>
           </div>
         </motion.div>

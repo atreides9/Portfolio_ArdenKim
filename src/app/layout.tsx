@@ -5,16 +5,20 @@ import '@/styles/globals.css';
 // Performance-optimized metadata for SEO (target Lighthouse 95+)
 export const metadata: Metadata = {
   title: {
-    default: '김나겸 | Product Designer',
-    template: '%s | 김나겸 Product Designer',
+    default: '김나겸 | AI-Augmented Product Designer & Builder',
+    template: '%s | 김나겸 AI Designer & Builder',
   },
   description:
-    '문제를 발견하고 해결하는 과정을 즐기는 프로덕트 디자이너. 나노소재화학에서 UX 디자인으로 전환한 독특한 관점으로 사용자 경험을 설계합니다.',
+    'AI를 활용해 실제 작동하는 도구를 만드는 프로덕트 디자이너. 디자인, 개발, AI가 만나는 지점에서 새로운 가능성을 탐구하고 실현합니다.',
   keywords: [
+    'AI Product Designer',
+    'AI-Augmented Designer',
+    'AI Builder',
     'Product Designer',
     'UX Designer',
     'UI Designer',
     '프로덕트 디자이너',
+    'AI 도구',
     'Portfolio',
     '포트폴리오',
   ],
@@ -27,8 +31,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ko_KR',
     url: 'https://ardenkim.com',
-    title: '김나겸 | Product Designer',
-    description: '과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계합니다.',
+    title: '김나겸 | AI-Augmented Product Designer & Builder',
+    description: 'AI를 활용해 실제 작동하는 도구를 만드는 프로덕트 디자이너. 디자인과 AI가 만나는 새로운 가능성을 탐구합니다.',
     siteName: '김나겸 Portfolio',
     images: [
       {
@@ -43,8 +47,8 @@ export const metadata: Metadata = {
   // Twitter optimization
   twitter: {
     card: 'summary_large_image',
-    title: '김나겸 | Product Designer',
-    description: '과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계합니다.',
+    title: '김나겸 | AI-Augmented Product Designer & Builder',
+    description: 'AI를 활용해 실제 작동하는 도구를 만드는 프로덕트 디자이너. 디자인과 AI가 만나는 새로운 가능성을 탐구합니다.',
     images: ['/og-image.jpg'],
     creator: '@ardenkim',
   },
@@ -139,33 +143,43 @@ export default function RootLayout({ children }: RootLayoutProps) {
           {children}
         </ClientProviders>
 
-        {/* Performance monitoring script will be injected here in production */}
-        {process.env.NODE_ENV === 'production' && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                // Core Web Vitals measurement
-                function vitals(metric) {
-                  console.log(metric.name, metric.value);
-                  // Send to analytics in production
+        {/* AI-Augmented Performance monitoring */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Initialize performance monitoring for AI-augmented features
+              window.addEventListener('DOMContentLoaded', function() {
+                // Track AI Lab section visibility
+                if ('IntersectionObserver' in window) {
+                  const aiLabObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                      if (entry.isIntersecting) {
+                        console.log('AI Lab section viewed');
+                        // Track AI feature engagement
+                      }
+                    });
+                  });
+                  
+                  const aiLabElement = document.getElementById('ai-lab');
+                  if (aiLabElement) {
+                    aiLabObserver.observe(aiLabElement);
+                  }
                 }
                 
-                // Load web-vitals library for performance monitoring
+                // Initialize full performance monitoring
                 if ('requestIdleCallback' in window) {
-                  requestIdleCallback(() => {
-                    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-                      getCLS(vitals);
-                      getFID(vitals);
-                      getFCP(vitals);
-                      getLCP(vitals);
-                      getTTFB(vitals);
+                  requestIdleCallback(function() {
+                    import('/src/lib/utils/performance.js').then(function(module) {
+                      module.initPerformanceMonitoring();
+                    }).catch(function(error) {
+                      console.warn('Performance monitoring failed to load:', error);
                     });
                   });
                 }
-              `,
-            }}
-          />
-        )}
+              });
+            `,
+          }}
+        />
       </body>
     </html>
   );

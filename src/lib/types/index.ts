@@ -35,8 +35,10 @@ export interface Skill {
 }
 
 export type SkillCategory =
+  | 'ai-integration'
+  | 'development' 
+  | 'ai-research'
   | 'design-tools'
-  | 'development'
   | 'collaboration'
   | 'research'
   | 'strategy';

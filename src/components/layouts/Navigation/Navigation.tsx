@@ -9,6 +9,7 @@ import { useSmartHeader } from '@/lib/hooks/useSmartHeader';
 
 const navItems: NavItem[] = [
   { id: 'hero', label: 'Home', href: '#hero' },
+  { id: 'ai-lab', label: 'AI Lab', href: '#ai-lab' },
   { id: 'about', label: 'About', href: '#about' },
   { id: 'projects', label: 'Projects', href: '#projects' },
   { id: 'skills', label: 'Skills', href: '#skills' },

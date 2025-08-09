@@ -7,18 +7,18 @@ import type { Project } from '@/lib/types';
 export const PROJECTS: readonly Project[] = [
   {
     id: 'job-hunter',
-    title: 'Job Hunter',
+    title: 'Job Hunter AI',
     description:
-      '취업 준비생의 지원 현황 관리 및 분석 플랫폼. 복잡한 지원 과정을 체계적으로 정리하고 인사이트를 제공하여 취업 성공률을 70% 향상시켰습니다.',
+      '🤖 AI로 강화된 취업 준비생의 지원 현황 관리 및 분석 플랫폼. Claude 3.5 Sonnet이 자소서를 분석하고 개선점을 제안하며, 맞춤형 면접 질문을 생성해 취업 성공률을 70% 향상시켰습니다.',
     imageUrl: '/images/projects/job-hunter-hero.webp',
     blurDataURL:
       'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==',
     metrics: [
-      { label: '시간 절약', value: '70%', description: '지원 관리 시간 단축' },
-      { label: '사용자 만족도', value: '95%', description: 'NPS 점수 기준' },
+      { label: 'AI 자소서 분석', value: '2,400+', description: '건 분석 완료' },
+      { label: '맞춤형 면접 질문', value: '15,000+', description: '개 생성' },
       { label: '취업 성공률', value: '3x', description: '플랫폼 사용자 대비' },
     ],
-    tags: ['UX Research', 'Product Strategy', 'Data Visualization', 'User Interface'],
+    tags: ['AI Integration', 'Claude 3.5', 'NLP', 'UX Research', 'Product Strategy'],
     category: 'product-strategy',
     featured: true,
     completedAt: new Date('2024-06-01'),
@@ -26,18 +26,18 @@ export const PROJECTS: readonly Project[] = [
   },
   {
     id: 'insight-dots',
-    title: 'Insight Dots',
+    title: 'Insight Dots AI',
     description:
-      '데이터 시각화를 통한 비즈니스 인사이트 발견 도구. 복잡한 데이터를 직관적으로 이해할 수 있는 인터페이스로 의사결정 속도를 3배 향상시켰습니다.',
+      '🧠 GPT-4와 Claude를 활용한 지능형 데이터 분석 및 시각화 플랫폼. 자연어로 질문하면 AI가 데이터를 분석하고 인사이트를 추출해 맞춤형 차트를 생성하며, 의사결정 속도를 3배 향상시켰습니다.',
     imageUrl: '/images/projects/insight-dots-hero.webp',
     blurDataURL:
       'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==',
     metrics: [
-      { label: '분석 속도', value: '3x', description: '기존 도구 대비' },
-      { label: '의사결정 개선', value: '85%', description: '정확도 향상' },
+      { label: '자연어 쿼리', value: '8,500+', description: '처리 완료' },
+      { label: 'AI 차트 생성', value: '3,200+', description: '개 자동 생성' },
       { label: '사용자 채택률', value: '92%', description: '30일 retention' },
     ],
-    tags: ['Data Visualization', 'Information Architecture', 'User Interface', 'Analytics'],
+    tags: ['AI Analytics', 'GPT-4', 'Claude', 'Data Visualization', 'NLP'],
     category: 'data-visualization',
     featured: true,
     completedAt: new Date('2024-04-15'),
