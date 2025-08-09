@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 
 // Performance-optimized metadata for SEO (target Lighthouse 95+)
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ardenkim.com'),
   title: {
     default: '김나겸 | Product Designer',
     template: '%s | 김나겸 Product Designer',

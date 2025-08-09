@@ -1,6 +1,6 @@
 import { AI_PROJECTS } from '@/lib/constants/aiProjects';
 
-const AiLabSection = () => {
+export const AiLabSection = () => {
   return (
     <section id="ai-lab" className="py-20">
       <div className="container mx-auto px-4">
@@ -25,4 +25,4 @@ const AiLabSection = () => {
   );
 };
 
-export default AiLabSection;
+

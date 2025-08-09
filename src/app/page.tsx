@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { AiLabSection } from '@/components/features/AiLab/AiLabSection';
 import { AboutSection } from '@/components/features/About/AboutSection';
 import { ContactSection } from '@/components/features/Contact/ContactSection';
@@ -7,6 +8,7 @@ import { Footer } from '@/components/layouts/Footer/Footer';
 
 // Page-specific metadata for better SEO
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ardenkim.com'),
   title: 'Arden Kim | AI-Augmented Product Designer & Builder',
   description:
     'AGI 시대의 하이브리드 크리에이터 - AI로 디자인하고, 코드로 구현하고, 데이터로 검증합니다.',

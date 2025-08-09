@@ -13,7 +13,7 @@ export interface Project {
   readonly featured: boolean;
   readonly completedAt: Date;
   readonly aiFeatures?: readonly string[];
-  readonly aiEnhancements?: readonly Record<string, boolean>;
+  readonly aiEnhancements?: Record<string, boolean>;
 }
 
 export interface ProjectMetric {
