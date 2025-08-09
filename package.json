@@ -16,13 +16,18 @@
     "lighthouse": "lhci autorun"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.3",
+    "@react-three/fiber": "^8.16.2",
+    "@vercel/analytics": "^1.0.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.2",
     "lucide-react": "^0.535.0",
     "next": "^14.2.5",
+    "openai": "^4.47.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^2.4.0",
+    "three": "^0.164.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.3",

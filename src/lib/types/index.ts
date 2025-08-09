@@ -12,6 +12,8 @@ export interface Project {
   readonly category: ProjectCategory;
   readonly featured: boolean;
   readonly completedAt: Date;
+  readonly aiFeatures?: readonly string[];
+  readonly aiEnhancements?: readonly Record<string, boolean>;
 }
 
 export interface ProjectMetric {
@@ -87,4 +89,5 @@ export interface NavItem {
   readonly label: string;
   readonly href: string;
   readonly icon?: string;
+  readonly children?: readonly NavItem[];
 }

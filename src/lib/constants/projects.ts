@@ -6,42 +6,53 @@ import type { Project } from '@/lib/types';
  */
 export const PROJECTS: readonly Project[] = [
   {
-    id: 'job-hunter',
-    title: 'Job Hunter',
-    description:
-      '취업 준비생의 지원 현황 관리 및 분석 플랫폼. 복잡한 지원 과정을 체계적으로 정리하고 인사이트를 제공하여 취업 성공률을 70% 향상시켰습니다.',
+    id: 'job-hunter-ai',
+    title: 'Job Hunter 2.0 - AI Enhanced',
+    description: 'Claude API를 활용하여 자기소개서를 자동으로 최적화하고, GPT-4로 면접 질문을 예측하는 AI 기반 취업 관리 플랫폼입니다.',
     imageUrl: '/images/projects/job-hunter-hero.webp',
     blurDataURL:
       'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==',
     metrics: [
-      { label: '시간 절약', value: '70%', description: '지원 관리 시간 단축' },
-      { label: '사용자 만족도', value: '95%', description: 'NPS 점수 기준' },
-      { label: '취업 성공률', value: '3x', description: '플랫폼 사용자 대비' },
+      { label: '지원서 작성 시간', value: '80% 감소' },
+      { label: '서류 통과율', value: '3x 향상' },
+      { label: 'AI 정확도', value: '94.2%' }
     ],
-    tags: ['UX Research', 'Product Strategy', 'Data Visualization', 'User Interface'],
+    aiFeatures: [
+      'Claude 기반 맞춤형 자기소개서 생성',
+      'AI 면접 질문 예측 및 답변 가이드',
+      '실시간 채용공고 분석 및 매칭',
+      'CV 최적화 점수링 시스템'
+    ],
+    tags: ['AI/ML', 'UX Research', 'Product Strategy', 'SaaS'],
     category: 'product-strategy',
     featured: true,
-    completedAt: new Date('2024-06-01'),
-    url: 'https://job-hunter.ardenkim.com',
+    completedAt: new Date('2024-07-15'),
+    url: 'https://job-hunter-ai.ardenkim.com',
   },
   {
-    id: 'insight-dots',
-    title: 'Insight Dots',
+    id: 'insight-dots-ai',
+    title: 'Insight Dots - AI Integration',
     description:
-      '데이터 시각화를 통한 비즈니스 인사이트 발견 도구. 복잡한 데이터를 직관적으로 이해할 수 있는 인터페이스로 의사결정 속도를 3배 향상시켰습니다.',
+      '기존 데이터 시각화 프로젝트에 AI 분석 기능을 추가하여, GPT-4로 데이터 인사이트를 자동 추출하고 Claude로 비즈니스 권장사항을 생성합니다.',
     imageUrl: '/images/projects/insight-dots-hero.webp',
     blurDataURL:
       'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==',
     metrics: [
-      { label: '분석 속도', value: '3x', description: '기존 도구 대비' },
-      { label: '의사결정 개선', value: '85%', description: '정확도 향상' },
-      { label: '사용자 채택률', value: '92%', description: '30일 retention' },
+      { label: '분석 속도', value: '10x', description: 'AI 기반 자동화' },
+      { label: '인사이트 정확도', value: '95%', description: '전문가 평가' },
+      { label: 'ROI', value: '250%', description: '프로젝트 수익률' },
     ],
-    tags: ['Data Visualization', 'Information Architecture', 'User Interface', 'Analytics'],
+    aiEnhancements: {
+      'GPT-4 기반 데이터 인사이트 자동 추출': true,
+      'Claude를 활용한 비즈니스 권장사항 생성': true,
+      '자연어 질의를 통한 데이터 탐색': true,
+      '예측 분석 및 트렌드 예측': true,
+    },
+    tags: ['AI/ML', 'Data Visualization', 'Analytics', 'B2B'],
     category: 'data-visualization',
     featured: true,
-    completedAt: new Date('2024-04-15'),
-    url: 'https://insight-dots.ardenkim.com',
+    completedAt: new Date('2024-08-01'),
+    url: 'https://insight-dots-ai.ardenkim.com',
   },
   {
     id: 'design-system',

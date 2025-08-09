@@ -1,19 +1,18 @@
-import type { Metadata } from 'next';
+import { AiLabSection } from '@/components/features/AiLab/AiLabSection';
 import { AboutSection } from '@/components/features/About/AboutSection';
 import { ContactSection } from '@/components/features/Contact/ContactSection';
 import { HeroSection } from '@/components/features/Hero/HeroSection';
-import { ProjectsSection } from '@/components/features/Projects/ProjectsSection';
 import { SkillsSection } from '@/components/features/Skills/SkillsSection';
 import { Footer } from '@/components/layouts/Footer/Footer';
 
 // Page-specific metadata for better SEO
 export const metadata: Metadata = {
-  title: '김나겸 | Product Designer Portfolio',
+  title: 'Arden Kim | AI-Augmented Product Designer & Builder',
   description:
-    '과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계하는 프로덕트 디자이너 김나겸의 포트폴리오입니다.',
+    'AGI 시대의 하이브리드 크리에이터 - AI로 디자인하고, 코드로 구현하고, 데이터로 검증합니다.',
   openGraph: {
-    title: '김나겸 | Product Designer Portfolio',
-    description: '과학적 사고와 창의적 문제해결이 만나는 지점에서 사용자 경험을 설계합니다.',
+    title: 'Arden Kim | AI-Augmented Product Designer & Builder',
+    description: 'AI와 함께 10배 빠르게 아이디어를 현실로 구현하는 김나겸의 포트폴리오.',
     url: 'https://ardenkim.com',
     type: 'website',
   },
@@ -30,8 +29,8 @@ export default function HomePage() {
         {/* About section with scroll-triggered animations */}
         <AboutSection />
 
-        {/* Projects section with lazy-loaded images */}
-        <ProjectsSection />
+        {/* AI Lab section */}
+        <AiLabSection />
 
         {/* Skills section with animated progress bars */}
         <SkillsSection />

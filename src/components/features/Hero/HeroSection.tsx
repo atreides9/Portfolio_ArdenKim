@@ -65,8 +65,8 @@ export function HeroSection() {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 className="inline-flex items-center rounded-full bg-primary-100 px-4 py-2 text-sm font-medium text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
               >
-                <span className="mr-2">💡</span>
-                사용자 중심 프로덕트 디자이너
+                <span className="mr-2">🤖</span>
+                AI-Augmented Product Designer & Builder
               </motion.div>
 
               {/* Main Title */}
@@ -79,11 +79,10 @@ export function HeroSection() {
                   className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl lg:text-6xl"
                 >
                   <span className="block text-primary-600 dark:text-primary-400">
-                    Product Designer
+                    1인 = 10인 팀의 생산성
                   </span>
                   <span className="block text-2xl font-medium text-gray-600 dark:text-gray-300 sm:text-3xl lg:text-4xl mt-2">
-                    사용자 리서치와 데이터 기반 의사결정으로
-                    비즈니스 임팩트를 만드는 디자이너입니다
+                    혼자서도 팀처럼, 디자이너이자 개발자이자 기획자로 일합니다
                   </span>
                 </motion.h1>
               </div>
@@ -95,9 +94,8 @@ export function HeroSection() {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 max-w-2xl"
               >
-                화학 연구자에서 UX 디자이너로 전환한 독특한 배경으로, 
-                <strong className="text-gray-900 dark:text-white"> 가설-검증 방법론</strong>을 
-                디자인 프로세스에 적용하여 검증된 사용자 경험을 만듭니다.
+                AGI 시대의 하이브리드 크리에이터 - 
+                <strong className="text-gray-900 dark:text-white"> AI로 디자인하고, 코드로 구현하고, 데이터로 검증합니다.</strong>
               </motion.p>
 
               {/* CTA Buttons */}
@@ -115,10 +113,10 @@ export function HeroSection() {
                     'transform transition-all duration-200 hover:-translate-y-1 hover:shadow-lg',
                     'font-medium'
                   )}
-                  aria-label="프로젝트 섹션으로 이동"
+                  aria-label="AI 프로젝트 보기"
                 >
                   <span className="relative z-10 flex items-center">
-                    프로젝트 보기
+                    AI 프로젝트 보기
                     <motion.span
                       className="ml-2"
                       animate={{ x: [0, 4, 0] }}
@@ -154,9 +152,9 @@ export function HeroSection() {
                 className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200 dark:border-gray-700"
               >
                 {[
-                  { value: '5+', label: '완성 프로젝트' },
-                  { value: '45%', label: '전환율 향상' },
-                  { value: '2.3x', label: '사용시간 증가' },
+                  { value: '24시간', label: '아이디어 → 프로토타입' },
+                  { value: '3일', label: '디자인 → 구현' },
+                  { value: '2주', label: 'MVP → 수익화' },
                 ].map((stat, index) => (
                   <div key={stat.label} className="text-center">
                     <motion.div
