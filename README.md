@@ -304,10 +304,10 @@ vercel --preview
 4. **비즈니스 임팩트**: 실제 수익 창출 가능한 구조
 
 ### 연락처
-- **Email**: sunmin@example.com
-- **LinkedIn**: [linkedin.com/in/sunmin-kim](https://linkedin.com/in/sunmin-kim)
-- **Portfolio**: [ardenkim.com](https://ardenkim.com)
+- **Email**: lovetung18@gmail.com
+- **LinkedIn**: [linkedin.com/in/Arden-Kim](https://www.linkedin.com/in/arden-kim-12196628b/)
+- **Portfolio**: [ardenkim.com](도메인 사야 됩니다..)
 
 ---
 
-**Built with ❤️ by Claude Code** | Powered by Next.js 14 + TypeScript + Tailwind CSS
+**Built with ❤ | Powered by Next.js 14 + TypeScript + Tailwind CSS
