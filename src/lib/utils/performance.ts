@@ -67,33 +67,38 @@ export class AIPerformanceTracker {
     const endTime = performance.now();
     const responseTime = endTime - startTime;
 
-    this.metrics.apiCalls++;
-    this.metrics.responseTime = 
-      (this.metrics.responseTime * (this.metrics.apiCalls - 1) + responseTime) / this.metrics.apiCalls;
+    AIPerformanceTracker.metrics.apiCalls++;
+    AIPerformanceTracker.metrics.responseTime =
+      (AIPerformanceTracker.metrics.responseTime * (AIPerformanceTracker.metrics.apiCalls - 1) +
+        responseTime) /
+      AIPerformanceTracker.metrics.apiCalls;
 
     if (success) {
-      this.metrics.successRate = 
-        ((this.metrics.successRate * (this.metrics.apiCalls - 1)) + 1) / this.metrics.apiCalls;
+      AIPerformanceTracker.metrics.successRate =
+        (AIPerformanceTracker.metrics.successRate * (AIPerformanceTracker.metrics.apiCalls - 1) +
+          1) /
+        AIPerformanceTracker.metrics.apiCalls;
     } else {
-      this.metrics.errorRate = 
-        ((this.metrics.errorRate * (this.metrics.apiCalls - 1)) + 1) / this.metrics.apiCalls;
+      AIPerformanceTracker.metrics.errorRate =
+        (AIPerformanceTracker.metrics.errorRate * (AIPerformanceTracker.metrics.apiCalls - 1) + 1) /
+        AIPerformanceTracker.metrics.apiCalls;
     }
 
-    this.metrics.timestamp = Date.now();
+    AIPerformanceTracker.metrics.timestamp = Date.now();
 
     // Log AI performance metrics
     console.log('AI API Performance:', {
       responseTime: Math.round(responseTime),
-      averageResponseTime: Math.round(this.metrics.responseTime),
-      totalCalls: this.metrics.apiCalls,
-      successRate: Math.round(this.metrics.successRate * 100) + '%',
+      averageResponseTime: Math.round(AIPerformanceTracker.metrics.responseTime),
+      totalCalls: AIPerformanceTracker.metrics.apiCalls,
+      successRate: Math.round(AIPerformanceTracker.metrics.successRate * 100) + '%',
     });
 
     return responseTime;
   }
 
   static getMetrics(): AIMetrics {
-    return { ...this.metrics };
+    return { ...AIPerformanceTracker.metrics };
   }
 }
 
@@ -155,7 +160,7 @@ export function monitorBundlePerformance() {
   // Track when the page becomes interactive
   document.addEventListener('DOMContentLoaded', () => {
     const navTiming = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
-    
+
     const metrics = {
       domContentLoaded: navTiming.domContentLoadedEventEnd - navTiming.fetchStart,
       fullyLoaded: navTiming.loadEventEnd - navTiming.fetchStart,
@@ -180,7 +185,7 @@ export function initPerformanceMonitoring() {
     requestIdleCallback(async () => {
       try {
         const { onCLS, onINP, onFCP, onLCP, onTTFB } = await import('web-vitals');
-        
+
         onCLS(trackWebVitals);
         onINP(trackWebVitals); // INP replaced FID in web-vitals v4
         onFCP(trackWebVitals);

@@ -123,10 +123,30 @@ const skillsData: Skill[] = [
 ];
 
 const skillCategories = [
-  { id: 'ai-integration', name: 'AI Integration', icon: '🤖', color: 'bg-gradient-to-br from-blue-500 to-purple-600' },
-  { id: 'development', name: 'Full-Stack Development', icon: '⚡', color: 'bg-gradient-to-br from-green-500 to-teal-600' },
-  { id: 'ai-research', name: 'AI-Augmented UX', icon: '🧠', color: 'bg-gradient-to-br from-purple-500 to-pink-600' },
-  { id: 'design-tools', name: 'Design Foundation', icon: '🎨', color: 'bg-gradient-to-br from-orange-500 to-red-500' },
+  {
+    id: 'ai-integration',
+    name: 'AI Integration',
+    icon: '🤖',
+    color: 'bg-gradient-to-br from-blue-500 to-purple-600',
+  },
+  {
+    id: 'development',
+    name: 'Full-Stack Development',
+    icon: '⚡',
+    color: 'bg-gradient-to-br from-green-500 to-teal-600',
+  },
+  {
+    id: 'ai-research',
+    name: 'AI-Augmented UX',
+    icon: '🧠',
+    color: 'bg-gradient-to-br from-purple-500 to-pink-600',
+  },
+  {
+    id: 'design-tools',
+    name: 'Design Foundation',
+    icon: '🎨',
+    color: 'bg-gradient-to-br from-orange-500 to-red-500',
+  },
 ];
 
 interface SkillBarProps {
@@ -207,8 +227,8 @@ export function SkillsSection() {
             AI × Design × Code
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            🤖 <strong>AI API 활용</strong>부터 <strong>풀스택 개발</strong>까지, 
-            실제로 작동하는 도구를 만드는 AI-Augmented Builder의 역량입니다.
+            🤖 <strong>AI API 활용</strong>부터 <strong>풀스택 개발</strong>까지, 실제로 작동하는
+            도구를 만드는 AI-Augmented Builder의 역량입니다.
           </p>
         </motion.div>
 

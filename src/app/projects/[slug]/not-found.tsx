@@ -31,7 +31,7 @@ export default function NotFound() {
             <ArrowLeft className="w-4 h-4" />
             <span>프로젝트로 돌아가기</span>
           </Link>
-          
+
           <Link
             href="/"
             className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"

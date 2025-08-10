@@ -41,13 +41,13 @@ const skillsData = [
 
 const skillConnections = [
   { from: 0, to: 2, strength: 0.95 }, // AI Integration ↔ Prompt Engineering
-  { from: 0, to: 3, strength: 0.8 },  // AI Integration ↔ 풀스택 개발
-  { from: 1, to: 5, strength: 0.9 },  // 시스템 사고 ↔ 문제 해결
-  { from: 2, to: 7, strength: 0.8 },  // Prompt Engineering ↔ API 설계
-  { from: 3, to: 7, strength: 0.9 },  // 풀스택 개발 ↔ API 설계
+  { from: 0, to: 3, strength: 0.8 }, // AI Integration ↔ 풀스택 개발
+  { from: 1, to: 5, strength: 0.9 }, // 시스템 사고 ↔ 문제 해결
+  { from: 2, to: 7, strength: 0.8 }, // Prompt Engineering ↔ API 설계
+  { from: 3, to: 7, strength: 0.9 }, // 풀스택 개발 ↔ API 설계
   { from: 4, to: 5, strength: 0.85 }, // UX 디자인 ↔ 문제 해결
-  { from: 1, to: 6, strength: 0.8 },  // 시스템 사고 ↔ 데이터 분석
-  { from: 6, to: 0, strength: 0.7 },  // 데이터 분석 ↔ AI Integration
+  { from: 1, to: 6, strength: 0.8 }, // 시스템 사고 ↔ 데이터 분석
+  { from: 6, to: 0, strength: 0.7 }, // 데이터 분석 ↔ AI Integration
 ];
 
 export function AboutSection() {
@@ -66,8 +66,12 @@ export function AboutSection() {
             화학자 → 디자이너 → AI 빌더
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            🧪 분자부터 시작해 🎨 사용자 경험을 거쳐 🤖 AI로 실제 도구를 만드는 
-            <strong className="text-blue-600 dark:text-blue-400"> 독특한 여정과 3가지 핵심 역량</strong>을 소개합니다.
+            🧪 분자부터 시작해 🎨 사용자 경험을 거쳐 🤖 AI로 실제 도구를 만드는
+            <strong className="text-blue-600 dark:text-blue-400">
+              {' '}
+              독특한 여정과 3가지 핵심 역량
+            </strong>
+            을 소개합니다.
           </p>
         </motion.div>
 
@@ -93,21 +97,24 @@ export function AboutSection() {
               {
                 icon: '🤖',
                 title: 'AI 시스템 설계 & 운영',
-                description: 'Claude 3.5 Sonnet, GPT-4 등 최신 LLM API를 활용해 실제 문제를 해결하는 AI 도구를 설계하고 운영합니다. 단순 활용이 아닌 프롬프트 최적화와 워크플로우 설계로 95% 정확도를 달성합니다.',
-                keyPoints: ['LLM API 활용', '프롬프트 엔지니어링', 'AI 워크플로우 설계']
+                description:
+                  'Claude 3.5 Sonnet, GPT-4 등 최신 LLM API를 활용해 실제 문제를 해결하는 AI 도구를 설계하고 운영합니다. 단순 활용이 아닌 프롬프트 최적화와 워크플로우 설계로 95% 정확도를 달성합니다.',
+                keyPoints: ['LLM API 활용', '프롬프트 엔지니어링', 'AI 워크플로우 설계'],
               },
               {
                 icon: '⚡',
                 title: '풀스택 개발 & 실현',
-                description: '디자인에서 끝나지 않고 Next.js, TypeScript로 직접 구현합니다. 사용자가 실제로 사용할 수 있는 완성된 제품을 만들어 2,100+명이 사용하는 라이브 서비스를 운영하고 있습니다.',
-                keyPoints: ['Next.js 14 구현', 'TypeScript 활용', 'Live 서비스 운영']
+                description:
+                  '디자인에서 끝나지 않고 Next.js, TypeScript로 직접 구현합니다. 사용자가 실제로 사용할 수 있는 완성된 제품을 만들어 2,100+명이 사용하는 라이브 서비스를 운영하고 있습니다.',
+                keyPoints: ['Next.js 14 구현', 'TypeScript 활용', 'Live 서비스 운영'],
               },
               {
                 icon: '🔬',
                 title: '과학적 검증 & 개선',
-                description: '화학 연구의 가설-검증 방법론을 AI 도구 개발에 적용합니다. 사용자 피드백과 사용 데이터를 분석해 지속적으로 개선하며, A/B 테스트로 기능의 효과를 객관적으로 검증합니다.',
-                keyPoints: ['사용자 데이터 분석', 'A/B 테스트 설계', '지속적 개선']
-              }
+                description:
+                  '화학 연구의 가설-검증 방법론을 AI 도구 개발에 적용합니다. 사용자 피드백과 사용 데이터를 분석해 지속적으로 개선하며, A/B 테스트로 기능의 효과를 객관적으로 검증합니다.',
+                keyPoints: ['사용자 데이터 분석', 'A/B 테스트 설계', '지속적 개선'],
+              },
             ].map((strength, index) => (
               <motion.div
                 key={strength.title}
@@ -119,15 +126,16 @@ export function AboutSection() {
               >
                 <div className="card p-6 h-full border-l-4 border-primary-500 hover:border-primary-600 transition-colors">
                   <div className="text-4xl mb-4">{strength.icon}</div>
-                  <h4 className="heading-4 text-gray-900 dark:text-white mb-4">
-                    {strength.title}
-                  </h4>
+                  <h4 className="heading-4 text-gray-900 dark:text-white mb-4">{strength.title}</h4>
                   <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                     {strength.description}
                   </p>
                   <div className="space-y-2">
                     {strength.keyPoints.map((point) => (
-                      <div key={point} className="flex items-center text-sm text-primary-600 dark:text-primary-400">
+                      <div
+                        key={point}
+                        className="flex items-center text-sm text-primary-600 dark:text-primary-400"
+                      >
                         <span className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2 flex-shrink-0"></span>
                         {point}
                       </div>
@@ -148,9 +156,7 @@ export function AboutSection() {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h3 className="heading-3 text-gray-900 dark:text-white mb-4">
-              AI 빌더 철학
-            </h3>
+            <h3 className="heading-3 text-gray-900 dark:text-white mb-4">AI 빌더 철학</h3>
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -163,8 +169,8 @@ export function AboutSection() {
                   🚀 실제로 작동하는 도구
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  컨셉이나 프로토타입에서 끝나지 않습니다. 실제 사용자가 매일 사용하는 
-                  라이브 AI 도구를 만들고 운영하며, 진짜 문제를 해결하는 것에 집중합니다.
+                  컨셉이나 프로토타입에서 끝나지 않습니다. 실제 사용자가 매일 사용하는 라이브 AI
+                  도구를 만들고 운영하며, 진짜 문제를 해결하는 것에 집중합니다.
                 </p>
               </motion.div>
 
@@ -176,7 +182,7 @@ export function AboutSection() {
                   🔬 데이터 기반 AI 최적화
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  AI의 응답 품질을 지속적으로 개선합니다. 사용자 피드백과 성능 데이터를 분석해 
+                  AI의 응답 품질을 지속적으로 개선합니다. 사용자 피드백과 성능 데이터를 분석해
                   프롬프트를 최적화하고, A/B 테스트로 기능의 효과를 검증합니다.
                 </p>
               </motion.div>
@@ -269,12 +275,8 @@ export function AboutSection() {
               AI, 디자인, 개발 스킬들이 서로 연결되어 실제 작동하는 도구를 만드는 힘이 됩니다.
             </p>
           </div>
-          
-          <SkillMolecule 
-            skills={skillsData}
-            connections={skillConnections}
-            className="mb-16"
-          />
+
+          <SkillMolecule skills={skillsData} connections={skillConnections} className="mb-16" />
         </motion.div>
 
         {/* Philosophy Statement */}

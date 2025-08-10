@@ -92,8 +92,9 @@ export function HeroSection() {
                     AI × Design × Build
                   </span>
                   <span className="block text-2xl font-medium text-gray-600 dark:text-gray-300 sm:text-3xl lg:text-4xl mt-2">
-                    디자인하고, AI로 구현하고, 실제로 작동하는 
-                    <strong className="text-gray-900 dark:text-white"> 도구를 만드는 빌더</strong>입니다
+                    디자인하고, AI로 구현하고, 실제로 작동하는
+                    <strong className="text-gray-900 dark:text-white"> 도구를 만드는 빌더</strong>
+                    입니다
                   </span>
                 </motion.h1>
               </div>
@@ -105,10 +106,14 @@ export function HeroSection() {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 max-w-2xl"
               >
-                화학자에서 디자이너, 그리고 AI 빌더로. 
-                <strong className="text-gray-900 dark:text-white"> Claude, GPT-4와 함께</strong> 
-                단순히 디자인만 하는 것이 아니라 실제로 사람들이 사용하는 
-                <strong className="text-blue-600 dark:text-blue-400"> AI 도구를 직접 만들고 운영</strong>합니다.
+                화학자에서 디자이너, 그리고 AI 빌더로.
+                <strong className="text-gray-900 dark:text-white"> Claude, GPT-4와 함께</strong>
+                단순히 디자인만 하는 것이 아니라 실제로 사람들이 사용하는
+                <strong className="text-blue-600 dark:text-blue-400">
+                  {' '}
+                  AI 도구를 직접 만들고 운영
+                </strong>
+                합니다.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -185,11 +190,9 @@ export function HeroSection() {
                 ))}
               </motion.div>
             </motion.div>
-
           </div>
         </div>
       </motion.div>
-
     </section>
   );
 }

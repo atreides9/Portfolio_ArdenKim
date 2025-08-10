@@ -42,15 +42,15 @@ export async function sendToClaude(
   }
 
   try {
-    const systemMessage = messages.find(m => m.role === 'system');
-    const conversationMessages = messages.filter(m => m.role !== 'system');
+    const systemMessage = messages.find((m) => m.role === 'system');
+    const conversationMessages = messages.filter((m) => m.role !== 'system');
 
     const response = await anthropic.messages.create({
       model: 'claude-3-5-sonnet-20241022',
       max_tokens: options?.maxTokens || 1000,
       temperature: options?.temperature || 0.7,
       ...(systemMessage?.content && { system: systemMessage.content }),
-      messages: conversationMessages.map(msg => ({
+      messages: conversationMessages.map((msg) => ({
         role: msg.role as 'user' | 'assistant',
         content: msg.content,
       })),
@@ -83,7 +83,7 @@ export async function sendToGPT(
       model: options?.model || 'gpt-4',
       max_tokens: options?.maxTokens || 1000,
       temperature: options?.temperature || 0.7,
-      messages: messages.map(msg => ({
+      messages: messages.map((msg) => ({
         role: msg.role,
         content: msg.content,
       })),
@@ -99,10 +99,7 @@ export async function sendToGPT(
 /**
  * Optimize prompt for better AI responses
  */
-export function optimizePrompt(
-  userInput: string,
-  context?: string
-): ChatMessage[] {
+export function optimizePrompt(userInput: string, context?: string): ChatMessage[] {
   const messages: ChatMessage[] = [
     {
       role: 'system',
@@ -135,11 +132,9 @@ class RateLimiter {
 
   async checkRate(): Promise<boolean> {
     const now = Date.now();
-    
+
     // Remove old requests outside the time window
-    this.requests = this.requests.filter(
-      timestamp => now - timestamp < this.timeWindow
-    );
+    this.requests = this.requests.filter((timestamp) => now - timestamp < this.timeWindow);
 
     if (this.requests.length >= this.maxRequests) {
       return false;
@@ -155,10 +150,7 @@ export const aiRateLimiter = new RateLimiter(10, 60000); // 10 requests per minu
 /**
  * Safe AI call with error handling and rate limiting
  */
-export async function safeAICall<T>(
-  apiCall: () => Promise<T>,
-  fallback?: T
-): Promise<T | null> {
+export async function safeAICall<T>(apiCall: () => Promise<T>, fallback?: T): Promise<T | null> {
   try {
     const canProceed = await aiRateLimiter.checkRate();
     if (!canProceed) {

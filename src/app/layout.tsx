@@ -32,7 +32,8 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     url: 'https://ardenkim.com',
     title: '김나겸 | AI-Augmented Product Designer & Builder',
-    description: 'AI를 활용해 실제 작동하는 도구를 만드는 프로덕트 디자이너. 디자인과 AI가 만나는 새로운 가능성을 탐구합니다.',
+    description:
+      'AI를 활용해 실제 작동하는 도구를 만드는 프로덕트 디자이너. 디자인과 AI가 만나는 새로운 가능성을 탐구합니다.',
     siteName: '김나겸 Portfolio',
     images: [
       {
@@ -48,7 +49,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '김나겸 | AI-Augmented Product Designer & Builder',
-    description: 'AI를 활용해 실제 작동하는 도구를 만드는 프로덕트 디자이너. 디자인과 AI가 만나는 새로운 가능성을 탐구합니다.',
+    description:
+      'AI를 활용해 실제 작동하는 도구를 만드는 프로덕트 디자이너. 디자인과 AI가 만나는 새로운 가능성을 탐구합니다.',
     images: ['/og-image.jpg'],
     creator: '@ardenkim',
   },
@@ -139,9 +141,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           Skip to main content
         </a>
 
-        <ClientProviders>
-          {children}
-        </ClientProviders>
+        <ClientProviders>{children}</ClientProviders>
 
         {/* AI-Augmented Performance monitoring */}
         <script

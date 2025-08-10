@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function useSmartHeader() {
   const [isVisible, setIsVisible] = useState(true);
@@ -37,7 +37,7 @@ export function useSmartHeader() {
         // 페이지 최상단에서는 항상 표시
         if (currentScrollY <= 50) {
           showHeader();
-        } 
+        }
         // 스크롤 업 시 즉시 표시
         else if (currentScrollY < lastScrollY.current) {
           showHeader();

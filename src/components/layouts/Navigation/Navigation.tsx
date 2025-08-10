@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import type { NavItem } from '@/lib/types';
-import { cn } from '@/lib/utils/cn';
+import { useEffect, useState } from 'react';
 import { useTheme } from '@/components/providers/ThemeProvider';
 import { useSmartHeader } from '@/lib/hooks/useSmartHeader';
+import type { NavItem } from '@/lib/types';
+import { cn } from '@/lib/utils/cn';
 
 const navItems: NavItem[] = [
   { id: 'hero', label: 'Home', href: '#hero' },
@@ -21,13 +21,13 @@ export function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  
+
   const isHomePage = pathname === '/';
   const isProjectPage = pathname.startsWith('/projects/');
-  
+
   // 홈페이지에서만 스마트 헤더 적용
   const smartHeader = useSmartHeader();
-  
+
   // 홈페이지가 아니면 항상 표시, 홈페이지면 스마트 헤더 로직 사용
   const isVisible = isHomePage ? smartHeader.isVisible : true;
   const isScrolled = isHomePage ? smartHeader.isScrolled : false;
@@ -35,7 +35,7 @@ export function Navigation() {
   // Handle active section based on scroll position
   useEffect(() => {
     if (!isHomePage) return;
-    
+
     const handleScroll = () => {
       const sections = navItems.map((item) => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 100;
@@ -56,7 +56,7 @@ export function Navigation() {
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
-    
+
     // If we're on a project page, navigate to home first
     if (isProjectPage) {
       if (sectionId === 'hero') {
@@ -67,7 +67,7 @@ export function Navigation() {
       setIsMobileMenuOpen(false);
       return;
     }
-    
+
     // Normal smooth scroll behavior for homepage
     const element = document.getElementById(sectionId);
     if (element) {
@@ -90,7 +90,7 @@ export function Navigation() {
       )}
       style={{
         transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
-        transition: 'transform 0.3s ease-in-out'
+        transition: 'transform 0.3s ease-in-out',
       }}
       role="banner"
     >
@@ -180,20 +180,20 @@ export function Navigation() {
           <div className="w-6 h-6 relative">
             <span
               className={cn(
-                "absolute top-1 left-0 w-6 h-0.5 bg-current transform origin-center transition-all duration-200",
-                isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+                'absolute top-1 left-0 w-6 h-0.5 bg-current transform origin-center transition-all duration-200',
+                isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
               )}
             />
             <span
               className={cn(
-                "absolute top-3 left-0 w-6 h-0.5 bg-current transition-all duration-200",
-                isMobileMenuOpen ? "opacity-0" : ""
+                'absolute top-3 left-0 w-6 h-0.5 bg-current transition-all duration-200',
+                isMobileMenuOpen ? 'opacity-0' : ''
               )}
             />
             <span
               className={cn(
-                "absolute top-5 left-0 w-6 h-0.5 bg-current transform origin-center transition-all duration-200",
-                isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                'absolute top-5 left-0 w-6 h-0.5 bg-current transform origin-center transition-all duration-200',
+                isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
               )}
             />
           </div>
@@ -203,8 +203,8 @@ export function Navigation() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "md:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 transition-all duration-300",
-          isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+          'md:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 transition-all duration-300',
+          isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         )}
       >
         <div className="container py-4">
